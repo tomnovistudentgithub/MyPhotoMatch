@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+.about-outer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-image:
+            linear-gradient(rgba(88, 185, 50, 0.5), rgba(252, 24, 24, 0.5)),
+            url('../../assets/woman-with-camera-taking-picture-reflection.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+
+.about-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /*background-color: rgba(0, 123, 255, 0.17);*/
+
+    margin-top: 75px;
+    flex-basis: 1400px;
+
+    /*padding-left: 250px;*/
+    /*padding-right: 250px;*/
+
+}
+
+.about-header {
+    font-size: 1rem;
+    padding: 20px;
+
+    border-radius: 20px;
+    margin: 20px;
+    background-color: rgba(38, 72, 208, 0.73);
+}
+
+.about-header ul {
+    list-style-type: none;
+    font-size: 1.5rem;
+}
+
+.about-header h1 {
+    text-align: center;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 80%, 20% 120%);
+
+}
+
+
+.about-inner-container p {
+    font-weight: 500;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:30px;
+    max-width: 800px;
+    border-radius: 20px;
+    background-color: rgba(38, 72, 208, 0.73);
+
+
+
+}
+
+
+@media (max-width: 800px) {
+    .about-header {
+text-align: center;
+
+    }
+
+    .about-outer-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+
+    .about-inner-container {
+
+
+        @media (max-width: 600px) {
+            flex-basis: auto;
+            padding: 10px;
+            margin-top: 50px;
+        }
+    }
+}
+
+
+
