@@ -1,0 +1,63 @@
+{
+  "photographers": [
+    {
+      "id": 1,
+      "name": "Foto Graafje",
+      "email": "foto.graafje@domein.nl",
+      "workarea": "Limburg" ,
+      "style": ["city", "urban", "architecture", "street"]
+    },
+
+    {
+      "id": 2,
+      "name": "Plaatjes Schieter",
+      "email": "plaatjes.schieter@domein.nl",
+      "workarea": "Utrecht" ,
+      "style": ["outdoors", "nature", "landscape"]
+    },
+
+    {
+      "id": 3,
+      "name": "Pixel Piraat",
+      "email": "mooi.exemplaar@domein.nl",
+      "workarea": "Overijssel" ,
+      "style": ["portret", "street", "architecture"]
+    },
+
+    {
+      "id": 4,
+      "name": "Trouw Fotograaf",
+      "email": "john.doe@example.com",
+      "workarea": "Gelderland" ,
+      "style": ["wedding", "party", "event", "person"]
+    },
+    {
+      "id": 5,
+      "name": "Kiekjes Koning",
+      "email": "k.koning@example.com",
+      "workarea": "Utrecht" ,
+      "style": ["human", "adult", "person", "portrait"]
+    },
+    {
+      "id": 6,
+      "name": "Shutter Sheriff",
+      "email": "123@example.com",
+      "workarea": "Limburg" ,
+      "style": ["scenery", "flower", "woman"]
+    },
+    {
+      "id": 7,
+      "name": "Belichtings Baas",
+      "email": "123@example.com",
+      "workarea": "Amsterdam" ,
+      "style": ["art", "painting", "archival", "oil painting"]
+    },
+    {
+      "id": 8,
+      "name": "Foto Fanaat",
+      "email": "123@example.com",
+        "workarea": "Gelderland" ,
+        "style": ["garden", "flower", "plants", "botanical"]
+    }
+  ]
+}
