@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './About.modules.css';
+import styles from './About.module.css';
 
 
 
@@ -10,8 +10,8 @@ function About() {
 
         <div className="about-outer-container">
 
-            <div className="about-inner-container">
-                <div className="about-header">
+            <div className={styles['about-outer-container']}>
+                <div className={styles['about-header']}>
                     <h1> Ever wondered... </h1>
                     <ul>
                         <li> Who makes those amazing photos you on social media? </li>

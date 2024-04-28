@@ -3,7 +3,7 @@ import PhotoCard from "../../components/PhotoCard/PhotoCard.jsx";
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 import {useNavigate} from "react-router-dom";
-import './MyPins.css';
+import styles from './MyPins.module.css';
 import PhotoPinner from "../../components/PhotoPinner/PhotoPinner.jsx";
 import MostChosenTags from "../../components/MostChosenTags.jsx";
 
@@ -16,32 +16,30 @@ function MyPins () {
 
 
     return (
-        <div className="my-pins-container">
+        <div className={styles['my-pins-container']}>
             {pinnedPhotos.length > 0 ? (
                 <>
-                    <h1 className="my-pins-h1-pinned">My Pinned Photos</h1>
-                    <div className="grid-container">
+                    <h1 className={styles['my-pins-h1-pinned']}>My Pinned Photos</h1>
+                    <div className={styles['grid-container']}>
                         {pinnedPhotos.map((photo, index) => (
-                            <div key={photo.id} className={`grid-item grid-item-${index}`}>
+                            <div key={photo.id} className={`${styles['grid-item']} ${styles[`grid-item-${index}`]}`}>
                                 <img src={photo.url} alt={photo.alt_description}/>
-                                <div className="pinButtonContainer">
+                                <div className={styles['pinButtonContainer']}>
                                     <PhotoPinner photo={photo}/>
                                 </div>
                                 <p>{photo.username}</p>
                             </div>
                         ))}
                     </div>
-                    <div className="mypins-tag-container">
+                    <div className={styles['mypins-tag-container']}>
                         <MostChosenTags tagCounts={tagCounts}/>
-                        <h1 className="my-pins-h1-tagcounts">Tag counts</h1>
+                        <h1 className={styles['my-pins-h1-tagcounts']}>Tag counts</h1>
                     </div>
                 </>
 
             ) : (
-                <p className="no-pins-p">Please start pinning more items and return to this page to see your pins. </p>
+                <p className={styles['no-pins-p']}>Please start pinning more items and return to this page to see your pins. </p>
             )}
-
-
         </div>
     );
 }

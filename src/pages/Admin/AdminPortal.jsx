@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
 import UserInfoButton from "../../components/InfoButton/UserInfoButton.jsx";
 import downloadPhotoFromApi from "../../api/noviBackendApi/downloadPhotoFromApi.js";
-import './AdminPortal.modules.css';
+import './AdminPortal.module.css';
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 
 function AdminPortal() {
@@ -11,17 +11,14 @@ function AdminPortal() {
     const [error, setError] = useState(null);
     const { userRole, isAdmin, loading } = useContext(AuthContext);
 
-
-
     const handleUsernameChange = (event) => {
         try {
-        setUsername(event.target.value);
+            setUsername(event.target.value);
             setError(null);
-    } catch (error) {
-        setError(error.message);
+        } catch (error) {
+            setError(error.message);
+        }
     }
-    }
-
 
     const handleDownloadPhoto = async () => {
         try {
@@ -47,9 +44,8 @@ function AdminPortal() {
 
 
     return (
-        <div className="outer-container-admin">
-            <div className="inner-container-admin">
-
+        <div className={styles['outer-container-admin']}>
+            <div className={styles['inner-container-admin']}>
                 <h1>Admin Portal</h1>
                 <form>
                     <label>
@@ -59,11 +55,8 @@ function AdminPortal() {
                 </form>
                 <UserInfoButton username={username}/>
                 <button className="download-button" onClick={handleDownloadPhoto}>Download user photo</button>
-
                 {error && <div className="error-message">{error}</div>}
-
             </div>
-
         </div>
     );
 }
