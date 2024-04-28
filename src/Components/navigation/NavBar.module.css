@@ -1,0 +1,222 @@
+.flex-container {
+    background-color: rgba(100, 108, 255, 0.7);
+
+ ;
+}
+
+.nav-wrapper {
+    align-items: center;
+}
+
+nav {
+
+    display: flex;
+    flex-direction: row;
+        align-items: center;
+    justify-content: space-between;
+        margin-left: 20px;
+    /*flex-basis: 1800px;*/
+    /*width: 100%;*/
+    box-sizing: border-box;
+}
+
+.photo-match-logo {
+    width: 45px;
+    height: 45px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: 5px;
+    justify-content: flex-end;
+}
+
+
+
+nav li {
+    flex-basis: 20px;
+    text-align: center;
+    list-style: none;
+    font-size: 0.8rem;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+
+
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    /*box-shadow: #1a1a1a 1px 1px 1px;*/
+    align-content: center;
+    transform: skewX(0deg);
+}
+
+.thumbtack-icon-navbar {
+    font-size: 1.5rem;
+    transform: skewX(20deg);
+}
+
+
+
+.nav-icon {
+    display: inline;
+    padding: 3px;
+    font-size: 1.5em;
+}
+
+.nav-text {
+    display: inline;
+}
+
+
+
+
+nav li:hover {
+    background-color: rgba(61, 4, 168, 0.9);
+    box-shadow: #1a1a1a 0px 0px 20px;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.thumbtack-icon-navbar:hover {
+    font-size: 1.5rem;
+    transform: skewX(-20deg);
+}
+
+
+
+.active-link {
+    color: white;
+    /*background-color: rgba(38, 72, 208, 0.5);*/
+
+}
+
+a {
+    color: sandybrown;
+}
+
+a:hover {
+    color: rgba(243, 68, 15, 0.9);
+}
+
+.login-button {
+    margin-right: 20px;
+    }
+
+.login-icon {
+    display: inline;
+}
+
+.login-text {
+    display: inline;
+}
+
+.nav-text-mypins {
+    white-space: nowrap;
+}
+
+
+.login-logout-button {
+    flex-basis: 20px;
+    text-align: center;
+    list-style: none;
+    font-size: 1rem;
+    color: sandybrown;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    align-content: center;
+    transform: skewX(0deg);
+    margin-left: auto;
+    background-color: transparent;
+
+}
+
+.login-logout-button:hover {
+    background-color: rgba(61, 4, 168, 0.9);
+    box-shadow: #1a1a1a 0px 0px 20px;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+@media (max-width: 1000px) {
+
+    .nav {
+
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-icon {
+        display: inline;
+        padding: 3px;
+        font-size: 1.5em;
+    }
+
+    .nav-icon:hover {
+        color: white;
+    }
+
+    .nav-text {
+        display: none;
+    }
+
+
+
+    .login-icon {
+        display: inline;
+        padding: 5px;
+        font-size: 1.5em;
+    }
+
+    .login-icon:hover {
+        color: white;
+    }
+
+    .login-text {
+        display: none;
+    }
+
+
+    /*.login-icon {*/
+    /*    display: none;*/
+    /*}*/
+
+    .login-text {
+        display: none
+    }
+
+    .active-link {
+        color: white;
+        /*background-color: rgba(38, 72, 208, 0.5);*/
+        padding: 3px;
+    }
+
+    nav li:active {
+        background-color: rgba(61, 4, 168, 0.9);
+    }
+
+
+    nav li:hover {
+        background-color: rgba(61, 4, 168, 0.9);
+        transform: skewX(0deg);
+        box-shadow: #1a1a1a 0px 0px 20px;
+        transition: all 0.3s ease;
+        padding: 17px;
+    }
+
+    .login-logout-button {
+        margin-right: 2px;
+        background-color: transparent;
+    }
+
+
+}
