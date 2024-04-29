@@ -3,7 +3,6 @@ import './App.css'
 import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import HomePage from './pages/HomePage/HomePage.jsx';
-import PhotoDetailPage from './pages/PhotoDetailPage';
 import TopicPhotos from "./pages/TopicPhotos/TopicPhotos.jsx";
 import MyPins from "./pages/MyPins/MyPins.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
@@ -21,7 +20,6 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/photo/:id" element={<PhotoDetailPage />} />
                         <Route path="/topic/:topicId" element={<TopicPhotos />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/mypins" element={<MyPins />} />

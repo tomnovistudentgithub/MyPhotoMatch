@@ -91,7 +91,7 @@ function TopicPhotos() {
                                 const gridArea = `${gridRow} / ${gridColumn}`;
                                 const photoClass = photo.orientation === 'landscape' ? 'double-width' : 'double-height';
                                 return (
-                                    <div key={photo.id} className=className={`${styles['photo-container']} ${photoClass}`}>
+                                    <div key={photo.id} className={`${styles['photo-container']} ${photoClass}`}>
                                         <img src={photo.urls.small} alt={photo.alt_description} style={{gridArea}}/>
                                         <PhotoPinner photo={photo}/>
                                         {error && <p>{error}</p>}

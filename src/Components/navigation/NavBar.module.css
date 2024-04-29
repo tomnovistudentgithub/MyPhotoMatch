@@ -1,7 +1,5 @@
 .flex-container {
     background-color: rgba(100, 108, 255, 0.7);
-
- ;
 }
 
 .nav-wrapper {
@@ -9,14 +7,11 @@
 }
 
 nav {
-
     display: flex;
     flex-direction: row;
-        align-items: center;
+    align-items: center;
     justify-content: space-between;
-        margin-left: 20px;
-    /*flex-basis: 1800px;*/
-    /*width: 100%;*/
+    margin-left: 20px;
     box-sizing: border-box;
 }
 
@@ -49,11 +44,8 @@ nav li {
     color: white;
     text-transform: uppercase;
     text-decoration: none;
-
-
     border-radius: 10px;
     transition: all 0.3s ease;
-    /*box-shadow: #1a1a1a 1px 1px 1px;*/
     align-content: center;
     transform: skewX(0deg);
 }
@@ -75,9 +67,6 @@ nav li {
     display: inline;
 }
 
-
-
-
 nav li:hover {
     background-color: rgba(61, 4, 168, 0.9);
     box-shadow: #1a1a1a 0px 0px 20px;
@@ -90,12 +79,8 @@ nav li:hover {
     transform: skewX(-20deg);
 }
 
-
-
 .active-link {
     color: white;
-    /*background-color: rgba(38, 72, 208, 0.5);*/
-
 }
 
 a {
@@ -108,7 +93,7 @@ a:hover {
 
 .login-button {
     margin-right: 20px;
-    }
+}
 
 .login-icon {
     display: inline;
@@ -121,7 +106,6 @@ a:hover {
 .nav-text-mypins {
     white-space: nowrap;
 }
-
 
 .login-logout-button {
     flex-basis: 20px;
@@ -185,18 +169,12 @@ a:hover {
         display: none;
     }
 
-
-    /*.login-icon {*/
-    /*    display: none;*/
-    /*}*/
-
     .login-text {
         display: none
     }
 
     .active-link {
         color: white;
-        /*background-color: rgba(38, 72, 208, 0.5);*/
         padding: 3px;
     }
 
@@ -217,6 +195,5 @@ a:hover {
         margin-right: 2px;
         background-color: transparent;
     }
-
 
 }
