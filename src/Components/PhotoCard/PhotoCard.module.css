@@ -1,0 +1,37 @@
+
+
+.photo-card-inner-container {
+  display: flex;
+  flex-basis: 400px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #007BFF;
+padding: 20px;
+}
+
+
+
+.photo-card-image-container {
+  position: relative;
+}
+
+.photo-card-image {
+  width: 300px;
+  height: 400px;
+
+  border: 7px solid #000000;
+}
+
+.photo-card-info {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photo-card-info b {
+text-align: center;
+}

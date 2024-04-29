@@ -1,0 +1,4 @@
+.get-user-info-content {
+    overflow: auto;
+    text-overflow: ellipsis;
+}

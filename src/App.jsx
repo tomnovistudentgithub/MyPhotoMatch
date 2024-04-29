@@ -7,6 +7,9 @@ import TopicPhotos from "./pages/TopicPhotos/TopicPhotos.jsx";
 import MyPins from "./pages/MyPins/MyPins.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
 import About from "./pages/About/About.jsx";
+import Login from "./Components/Login/Login.jsx";
+import Registration from "./Components/Registration/Registration.jsx";
+import AdminRoute from "./Components/AdminRoute.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
