@@ -10,6 +10,7 @@ import About from "./pages/About/About.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Registration from "./Components/Registration/Registration.jsx";
 import AdminRoute from "./Components/AdminRoute.jsx";
+import NavBar from "./Components/navigation/NavBar.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
