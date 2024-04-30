@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import styles from './HomePage.module.css';
 import {usePhotos} from "../../hooks/usePhotos.js";
 import {useTopics} from "../../hooks/useTopics.js";
-
+import PhotoCard from "../../Components/PhotoCard/PhotoCard.jsx";
+import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
 
 function HomePage() {
     const { photos, isLoading: photosLoading, setPage, error } = usePhotos();
@@ -22,6 +23,7 @@ function HomePage() {
     };
 
     return (
+        <>
         <div className={styles['outer-section-homepage']}>
             <div className={styles['header-container']}>
                 <h2>Photo topics</h2>
@@ -29,7 +31,7 @@ function HomePage() {
 
             <section className={styles['outer-section-topics']}>
                 {topics.map((topic) => (
-                    <div className="topic" key={topic.id}>
+                    <div className={styles['topic']} key={topic.id}>
                         {topic.cover_photo &&
                             <Link to={`/topic/${topic.id}`}>
                                 <img src={topic.cover_photo.urls.small} alt={topic.cover_photo.alt_description}/>
@@ -38,7 +40,7 @@ function HomePage() {
                         <Link to={`/topic/${topic.id}`}>
                             <h3>{topic.title}</h3>
                         </Link>
-                        <p className="topic-description-homepage">{topic.description}</p>
+                        <p className={styles['topic-description-homepage']}>{topic.description}</p>
                     </div>
                 ))}
             </section>
@@ -61,7 +63,10 @@ function HomePage() {
                     <PhotoCard key={photo.id} photo={photo}/>
                 ))}
             </section>
+
         </div>
+    <ScrollIndicator/>
+    </>
     );
 }
 

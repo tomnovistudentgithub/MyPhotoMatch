@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import PhotoCard from "../../components/PhotoCard/PhotoCard.jsx";
+
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 import {useNavigate} from "react-router-dom";
-import styles from './MyPins.module.css';
-import PhotoPinner from "../../components/PhotoPinner/PhotoPinner.jsx";
-import MostChosenTags from "../../components/MostChosenTags.jsx";
-
-
+import styles from '../MyPins/MyPins.module.css';
+import MostChosenTags from "../../Components/MostChosenTags.jsx"; 
+import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
 function MyPins () {
     const { isLoggedIn } = useContext(AuthContext);
     const { tagCounts, pinnedPhotos } = useContext(PinnedPhotosContext);

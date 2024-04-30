@@ -1,65 +1,38 @@
 .outer-section-homepage {
     /*display: flex;*/
     /*flex-direction: column;*/
-    justify-content: center;
-    /*background-color: #213547;*/
-    /*z-index: -2;*/
+    /*justify-content: center;*/
 }
-
 
 .header-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background-color: rgba(255, 20, 147, 0.54);*/
-    z-index: 10;
     shape-outside: ellipse(50% 50% at 50% 50%);
-
 }
 
 
 h2 {
     margin-top: 10px;
-margin-bottom: 10px;
+    margin-bottom: 10px;
     text-align: center;
-
     font-family: "Gill Sans MT";
     color: rgb(255, 243, 191);
     text-shadow: #1a1a1a;
     background-color: rgba(255, 20, 147, 0.8);
-    padding: 20px;
-    padding-left: 250px;
-    padding-right: 250px;
-    /*clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);*/
+    padding: 20px 250px;
     clip-path: polygon(5% 30%, 70% 0%, 101% 50%, 30% 100%);
-
 }
-
-h2:hover {
-
-
-}
-
-
 
 .header-container h2::before {
     content: "";
-
-    /*border-left: 50px solid transparent;*/
-    /*border-bottom: 200px solid rgba(255, 20, 147, 0.54);*/
-}
-
-.disclaimer-homepage {
-    background-color: rgba(250, 211, 26, 0.42);
-    color: white;
 }
 
 .outer-section-topics {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /*margin-top: 20px;*/
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
@@ -74,32 +47,35 @@ h2:hover {
     background-color: #535bf2;
     padding: 20px;
     margin: 20px;
-
 }
 
 
 .topic a img {
     display: block;
     margin: auto;
-   border-style: solid;
+    border-style: solid;
     border-color: #1a1a1a;
     border-width: 10px;
     border-radius: 5px;
     max-width: 90%;
-    /*height: auto;*/
-    }
+}
 
 .topic-description-homepage {
     font-size: 0.9em;
 }
 
+.disclaimer-homepage {
+    background-color: rgba(250, 211, 26, 0.42);
+    color: white;
+}
+
 .outer-section-photos-homepage {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 5px;
-        gap: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+    gap: 15px;
 }
 
 
@@ -113,7 +89,7 @@ h2:hover {
 }
 
 .page-buttons-homepage {
-margin-left: 30px;
+    margin-left: 30px;
 }
 
 .disclaimer-homepage {
@@ -139,7 +115,7 @@ margin-left: 30px;
 
     h2 {
         margin-top: 10px;
-       padding:50px;
+        padding:50px;
         z-index: 1;
         clip-path: polygon(5% 30%, 70% 0%, 101% 50%, 30% 100%);
     }

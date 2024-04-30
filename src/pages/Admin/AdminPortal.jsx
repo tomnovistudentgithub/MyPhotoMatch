@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
-import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
-import UserInfoButton from "../../components/InfoButton/UserInfoButton.jsx";
 import downloadPhotoFromApi from "../../api/noviBackendApi/downloadPhotoFromApi.js";
-import './AdminPortal.module.css';
+import styles from './AdminPortal.module.css';
 import {AuthContext} from "../../contexts/AuthContext.jsx";
+import UserInfoButton from "../../Components/InfoButton/UserInfoButton.jsx";
+
 
 function AdminPortal() {
     const [username, setUsername] = useState('');
@@ -30,6 +30,9 @@ function AdminPortal() {
             setError(null);
         } catch (error) {
             setError(error.message);
+            if (error.response && error.response.status === 400) {
+                setError('No photo available for this user');
+            }
         }
     };
 

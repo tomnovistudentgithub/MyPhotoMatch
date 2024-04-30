@@ -11,6 +11,8 @@ import Login from "./Components/Login/Login.jsx";
 import Registration from "./Components/Registration/Registration.jsx";
 import AdminRoute from "./Components/AdminRoute.jsx";
 import NavBar from "./Components/navigation/NavBar.jsx";
+import AuthContextProvider from "./contexts/AuthContext.jsx";
+import PinnedPhotosProvider from "./contexts/PinnedPhotosProvider.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
