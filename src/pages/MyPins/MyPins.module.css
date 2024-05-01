@@ -12,8 +12,8 @@
     font-size: 1em;
     grid-auto-rows: 250px;
     color:sandybrown;
-
 }
+
 .my-pins-h1-pinned {
     position: relative;
     z-index: 1;
@@ -101,27 +101,6 @@
 .my-pins-container .grid-container .grid-item {
     position: relative;
 }
-
-
-
-/*.pinButtonContainer {*/
-/*    !*position: absolute;*!*/
-/*    !*top: 10px;*!*/
-/*    !*right: 10px;*!*/
-/*    !*background: transparent;*!*/
-/*    !*border: none;*!*/
-
-/*}*/
-
-/*.my-pins-container .grid-container .grid-item div button {*/
-/*    position: absolute;*/
-/*    top: 10px;*/
-/*    right: 10px;*/
-/*    background: transparent;*/
-/*    border: none;*/
-/*    opacity: 1;*/
-/*    color: sandybrown;*/
-/*}*/
 
 .my-pins-container .grid-container .grid-item div button:hover {
     opacity: 0.7;

@@ -13,6 +13,7 @@
 }
 
 
+
 h2 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -27,6 +28,15 @@ h2 {
 
 .header-container h2::before {
     content: "";
+}
+
+.header-container p {
+    color: #f4f4f4;
+    font-size: 1em;
+    display: block;
+    width: 600px;
+    text-align: center;
+
 }
 
 .outer-section-topics {

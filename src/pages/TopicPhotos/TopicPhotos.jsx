@@ -7,14 +7,15 @@ import styles from './TopicPhotos.module.css';
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
 import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
+
 function TopicPhotos() {
     const { topicId } = useParams();
     const [topic, setTopic] = useState(null);
     const [photos, setPhotos] = useState([]);
     const [showPhotos, setShowPhotos] = useState(false);
-    const { pinnedPhotos, setPinnedPhotos } = useContext(PinnedPhotosContext);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const { isTopicPage } = useContext(PinnedPhotosContext);
 
     useEffect(() => {
         const fetchTopic = async () => {
@@ -71,7 +72,18 @@ function TopicPhotos() {
         return  <div className={styles['error-message']}>{error}</div>;
     }
 
-    const coverPhotoUrl = topic.cover_photo.urls.regular;
+    let coverPhotoUrl;
+    if (topic.cover_photo) {
+        coverPhotoUrl = topic.cover_photo.urls.regular;
+    } else if (topic.photos && topic.photos.length > 0) {
+
+        coverPhotoUrl = topic.photos[0].urls.small;
+    } else {
+
+        coverPhotoUrl = null;
+        console.error('No cover photo available for this topic');
+    }
+
 
 
     return (
@@ -94,7 +106,7 @@ function TopicPhotos() {
                                 return (
                                     <div key={photo.id} className={`${styles['photo-container']} ${photoClass}`}>
                                         <img src={photo.urls.small} alt={photo.alt_description} style={{gridArea}}/>
-                                        <PhotoPinner photo={photo}/>
+                                        <PhotoPinner photo={photo} isTopicPage={isTopicPage}/>
                                         {error && <p>{error}</p>}
                                     </div>
                                 );

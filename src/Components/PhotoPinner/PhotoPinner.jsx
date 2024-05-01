@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack, faBan } from '@fortawesome/free-solid-svg-icons';
 import styles from './PhotoPinner.module.css';
 
-function PhotoPinner({ photo }) {
+function PhotoPinner({ photo, isTopicPage }) {
     const { pinnedPhotos, setPinnedPhotos, togglePinPhoto } = useContext(PinnedPhotosContext);
     const { isLoggedIn } = useContext(AuthContext);
     const [isPhotoPinned, setIsPhotoPinned] = useState(false);
     const navigate = useNavigate();
+    const pinButtonContainerClass = isTopicPage ? styles['pinButtonContainerTopic'] : styles['pinButtonContainer'];
+
 
     const handlePinPhoto = () => {
         if (!isLoggedIn) {
@@ -31,7 +33,7 @@ function PhotoPinner({ photo }) {
 
 
     return (
-        <div className={styles.pinButtonContainer}>
+        <div className={pinButtonContainerClass}>
             {isPhotoPinned ? (
                 <button onClick={handleUnpinPhoto}><FontAwesomeIcon icon={faBan}/> Unpin</button>
             ) : (

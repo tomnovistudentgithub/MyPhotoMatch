@@ -5,6 +5,7 @@ import getUserInfoField from "../api/noviBackendApi/getUserInfoField.js";
 import countTagsInPhotos from "../helpers/countTagsInPhotos.js";
 import getPhotoFromDBWithId from "../api/getPhotoFromDBWithId.js";
 import {AuthContext} from "./AuthContext.jsx";
+import {useLocation} from "react-router-dom";
 
 const PinnedPhotosProvider = ({ children }) => {
     const [pinnedPhotosIds, setPinnedPhotosIds] = useState([]);
@@ -14,8 +15,11 @@ const PinnedPhotosProvider = ({ children }) => {
     const { isLoggedIn } = useContext(AuthContext);
     const [error, setError] = useState(null);
 
+
+    const location = useLocation();
+    const isTopicPage = location.pathname.includes('topic') || location.pathname.includes('mypins');
+
     const fetchPinnedPhotos = async () => {
-        console.log('Fetching pinned photos');
         let userInfo = await getUserInfoField();
         if (typeof userInfo === 'string') {
             userInfo = [userInfo];
@@ -31,6 +35,8 @@ const PinnedPhotosProvider = ({ children }) => {
     }, [isLoggedIn]);
 
     useEffect(() => {
+        console.log(location.pathname);
+        console.log(isTopicPage);
         fetchPinnedPhotos();
     }, [isLoggedIn]);
 
@@ -99,8 +105,10 @@ const PinnedPhotosProvider = ({ children }) => {
         }
     }
 
+
+
     return (
-        <PinnedPhotosContext.Provider value={{ pinnedPhotos, setPinnedPhotos, togglePinPhoto, fetchPinnedPhotos, tagCounts, error}}>
+        <PinnedPhotosContext.Provider value={{ pinnedPhotos, setPinnedPhotos, togglePinPhoto, fetchPinnedPhotos, tagCounts, error, isTopicPage}}>
             {children}
         </PinnedPhotosContext.Provider>
     );

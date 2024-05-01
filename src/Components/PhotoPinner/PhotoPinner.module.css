@@ -1,13 +1,25 @@
 .pinButtonContainer {
     position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    opacity: 1;
+}
+
+.pinButtonContainerTopic {
+    position: absolute;
     top: 30px;
     right: 15px;
     background: transparent;
     border: none;
     opacity: 1;
-
 }
 
 .pinButtonContainer button {
+    color: #f49460;
+}
+
+.pinButtonContainerTopic button {
     color: #f49460;
 }

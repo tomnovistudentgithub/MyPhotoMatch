@@ -19,8 +19,9 @@ function App() {
 
     return (
         <AuthContextProvider>
+            <Router>
             <PinnedPhotosProvider>
-                <Router>
+
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
@@ -33,8 +34,9 @@ function App() {
                         <Route path="/admin" element={<AdminRoute />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
-                </Router>
+
             </PinnedPhotosProvider>
+            </Router>
         </AuthContextProvider>
     );
 }

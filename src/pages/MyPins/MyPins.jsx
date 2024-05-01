@@ -10,6 +10,7 @@ function MyPins () {
     const { isLoggedIn } = useContext(AuthContext);
     const { tagCounts, pinnedPhotos } = useContext(PinnedPhotosContext);
     const navigate = useNavigate();
+    const { isTopicPage } = useContext(PinnedPhotosContext);
 
 
 
@@ -23,7 +24,7 @@ function MyPins () {
                             <div key={photo.id} className={`${styles['grid-item']} ${styles[`grid-item-${index}`]}`}>
                                 <img src={photo.url} alt={photo.alt_description}/>
                                 <div className={styles['pinButtonContainer']}>
-                                    <PhotoPinner photo={photo}/>
+                                    <PhotoPinner photo={photo} isTopicPage={isTopicPage}/>
                                 </div>
                                 <p>{photo.username}</p>
                             </div>

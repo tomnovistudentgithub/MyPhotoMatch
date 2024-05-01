@@ -47,7 +47,7 @@ function NavBar() {
                                 <li><NavLink to="/mypins"
                                              className={matchMyPins ? styles['active-link'] : ""}><FontAwesomeIcon
                                     className={styles['nav-icon']} icon={faThumbtack}/><span
-                                    className={styles['nav-text']} className={styles['nav-text-mypins']}>My Pins</span></NavLink>
+                                    className={`${styles['nav-text']} ${styles['nav-text-mypins']}`}>My Pins</span></NavLink>
                                 </li>}
                             {isAdmin &&
                                 <li>
