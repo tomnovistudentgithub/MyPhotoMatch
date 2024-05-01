@@ -1,6 +1,6 @@
 # MyPhotoMatch
 
-![Screenshot van de applicatie](https://github.com/tomnovistudentgithub/photo/blob/main/src/assets/MyPhotoMatchHomepage.png)
+![Screenshot van de applicatie](https://github.com/tomnovistudentgithub/MyPhotoMatch/blob/main/src/assets/MyPhotoMatchHomepage.png)
 
 Dit project is een foto-applicatie waar gebruikers foto's kunnen pinnen en hun favoriete tags kunnen bijhouden. Het is gebouwd met React en maakt gebruik van een externe API om foto's op te halen.
 
