@@ -113,15 +113,15 @@
 
 /*}*/
 
-.my-pins-container .grid-container .grid-item div button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    opacity: 1;
-    color: sandybrown;
-}
+/*.my-pins-container .grid-container .grid-item div button {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    right: 10px;*/
+/*    background: transparent;*/
+/*    border: none;*/
+/*    opacity: 1;*/
+/*    color: sandybrown;*/
+/*}*/
 
 .my-pins-container .grid-container .grid-item div button:hover {
     opacity: 0.7;

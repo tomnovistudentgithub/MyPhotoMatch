@@ -1,0 +1,35 @@
+@keyframes grow-shrink {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.scrollIndicator {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 3em;
+    color: white;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.scrollIndicator svg {
+    background-color: rgba(136, 136, 136, 0.29);
+    border-radius: 50%;
+    padding-top: 10px;
+    width: 50px;
+    height: 50px;
+
+}
+
+.scrollIndicator:hover {
+transform: scale(1.2);
+}
+
+.scrollIndicator.visible {
+    font-size: 4em;
+    opacity: 1;
+    animation: grow-shrink 1s ease-in-out;
+}
+

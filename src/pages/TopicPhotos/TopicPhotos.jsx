@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import unsplashedEndpoint from '../../api/unsplashedApi/unsplashedEndpoint.js';
 import { getTopic } from '../../api/unsplashedApi/getTopic.js';
 import { getTopicPhotos } from '../../api/unsplashedApi/getTopicPhotos.js'
-import * as styles from './TopicPhotos.module.css';
+import styles from './TopicPhotos.module.css';
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
-import PhotoPinner from "../../components/PhotoPinner/PhotoPinner.jsx";
+import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
+import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
 function TopicPhotos() {
     const { topicId } = useParams();
     const [topic, setTopic] = useState(null);
@@ -89,7 +90,7 @@ function TopicPhotos() {
                                 const gridRow = Math.floor(index / 3) + 1;
                                 const gridColumn = index % 3 + 1;
                                 const gridArea = `${gridRow} / ${gridColumn}`;
-                                const photoClass = photo.orientation === 'landscape' ? 'double-width' : 'double-height';
+                                const photoClass = photo.orientation === 'landscape' ? styles['double-width'] : styles['double-height'];
                                 return (
                                     <div key={photo.id} className={`${styles['photo-container']} ${photoClass}`}>
                                         <img src={photo.urls.small} alt={photo.alt_description} style={{gridArea}}/>
@@ -99,8 +100,10 @@ function TopicPhotos() {
                                 );
                             })}
                         </div>
+
                     )}
                 </div>
+                <ScrollIndicator/>
 
             </div>
 

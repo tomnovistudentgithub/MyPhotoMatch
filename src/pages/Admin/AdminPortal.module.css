@@ -19,14 +19,11 @@ color: rgba(243, 232, 214, 0.98);
 
 
 .download-button {
-    margin-left: 20px;
-
+    margin-top: 10px;
 }
 
 .error-message {
     color: red;
-
-
 }
 
 .username-input {
@@ -37,4 +34,9 @@ margin: 10px;
     border: 1px solid black;
     background-color: rgba(243, 232, 214, 0.98);
 color: red;
+}
+
+.form {
+    padding: 0px;
+    margin: 10px;
 }

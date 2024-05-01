@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
-import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
-import UserInfoButton from "../../components/InfoButton/UserInfoButton.jsx";
 import downloadPhotoFromApi from "../../api/noviBackendApi/downloadPhotoFromApi.js";
-import './AdminPortal.module.css';
+import styles from './AdminPortal.module.css';
 import {AuthContext} from "../../contexts/AuthContext.jsx";
+import UserInfoButton from "../../Components/InfoButton/UserInfoButton.jsx";
+
 
 function AdminPortal() {
     const [username, setUsername] = useState('');
@@ -30,6 +30,9 @@ function AdminPortal() {
             setError(null);
         } catch (error) {
             setError(error.message);
+            if (error.response && error.response.status === 400) {
+                setError('No photo available for this user');
+            }
         }
     };
 
@@ -38,7 +41,6 @@ function AdminPortal() {
     }
 
     if (userRole !== 'ADMIN') {
-        console.log('userRole:', userRole);
         return <h1>You do not have permission to view this page</h1>;
     }
 
@@ -47,14 +49,16 @@ function AdminPortal() {
         <div className={styles['outer-container-admin']}>
             <div className={styles['inner-container-admin']}>
                 <h1>Admin Portal</h1>
-                <form>
+                <p>On the admin page you can request user info and download a users' uploaded photo.</p>
+                <p>Because an admin can handle a bare UX, there is not much styling or polishing up of the data content here.</p>
+                <form className={styles['form']}>
                     <label>
-                        Username:
+                        Username:<br></br>
                         <input type="text" value={username} onChange={handleUsernameChange} required/>
                     </label>
                 </form>
                 <UserInfoButton username={username}/>
-                <button className="download-button" onClick={handleDownloadPhoto}>Download user photo</button>
+                <button className={styles['download-button']} onClick={handleDownloadPhoto}>Download user photo</button>
                 {error && <div className="error-message">{error}</div>}
             </div>
         </div>

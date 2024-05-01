@@ -8,14 +8,15 @@ function About() {
 
     return (
 
-        <div className="about-outer-container">
+        <div className={styles['about-outer-container']}>
 
-            <div className={styles['about-outer-container']}>
+            <div className={styles['about-inner-container']}>
                 <div className={styles['about-header']}>
                     <h1> Ever wondered... </h1>
                     <ul>
-                        <li> Who makes those amazing photos you on social media? </li>
-                        <li> Ever thought how you or your family would look if you had a photograph taken like that?</li>
+                        <li> Who makes those amazing photos you on social media?</li>
+                        <li> Ever thought how you or your family would look if you had a photograph taken like that?
+                        </li>
                     </ul>
                 </div>
 
@@ -29,7 +30,6 @@ function About() {
                     Once you have a nice selection, go to the contact page to get in touch with the photographers that
                     match your chosen style. Enjoy your photoshoot!
                 </p>
-
 
 
                 <caption><a

@@ -120,7 +120,7 @@ function Contact() {
                                placeholder="Username"
                                disabled={!!username}
                         />
-                        {error.message && <p>{error.message}</p>}
+                        {error && error.message && <p>{error.message}</p>}
                     </div>
 
                     {errors.userName && <p>error</p>}
