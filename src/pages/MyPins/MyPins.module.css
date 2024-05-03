@@ -15,21 +15,16 @@
 }
 
 .my-pins-h1-pinned {
-    position: relative;
     z-index: 1;
     font-size: 4em;
     opacity: 0.4;
     width: 100%;
     text-align: center;
-    top: 15%;
-
-    transform: translateY(-50%);
     font-style: italic;
     margin-top: 60px;
 }
 
 .my-pins-h1-tagcounts {
-    position: relative;
     z-index: 1;
     font-size: 3em;
     opacity: 0.4;
@@ -39,12 +34,11 @@
     transform: translateY(-50%);
     font-style: italic;
     right: 20%;
+    margin-top: 60px;
 }
 
 .my-pins-container .grid-container .grid-item {
-    /*background-color: rgba(204, 204, 204, 0.8);*/
     text-align: center;
-    /*padding: 20px;*/
     font-size: 12px;
     border-radius: 10px;
 }
@@ -62,7 +56,6 @@
     margin-top: 10px;
     height: 90%;
     object-fit: cover;
-    /*border-radius: 10px;*/
     border: 9px solid #000000;
 
 }
@@ -107,7 +100,17 @@
 }
 
 .mypins-tag-container {
+    display: flex;
+    flex-direction: column;
     color: sandybrown;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 40px;
+    max-width: 70%;
+    width:1200px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 .no-pins-p {
@@ -131,6 +134,15 @@
     .my-pins-container .grid-container .grid-item-5 {
         grid-column: auto;
         grid-row: auto;
+    }
+
+    .my-pins-container {
+        max-width: 100%;
+    }
+
+    .my-pins-h1-pinned {
+        margin-top: 20px;
+        font-size: 3em;
     }
 
 }

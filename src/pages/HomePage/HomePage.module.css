@@ -12,18 +12,14 @@
     shape-outside: ellipse(50% 50% at 50% 50%);
 }
 
-
-
 h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    z-index: 1;
+    font-size: 4em;
+    opacity: 0.4;
+    width: 100%;
     text-align: center;
-    font-family: "Gill Sans MT";
-    color: rgb(255, 243, 191);
-    text-shadow: #1a1a1a;
-    background-color: rgba(255, 20, 147, 0.8);
-    padding: 20px 250px;
-    clip-path: polygon(5% 30%, 70% 0%, 101% 50%, 30% 100%);
+    font-style: italic;
+    margin-top: 20px;
 }
 
 .header-container h2::before {
@@ -31,7 +27,7 @@ h2 {
 }
 
 .header-container p {
-    color: #f4f4f4;
+    color: rgba(244, 244, 244, 0.71);
     font-size: 1em;
     display: block;
     width: 600px;
@@ -53,10 +49,10 @@ h2 {
     justify-content: flex-start;
     align-items: center;
     align-content: center;
-    flex-basis: 350px;
+    flex-basis: 395px;
     background-color: #535bf2;
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
 }
 
 
@@ -108,13 +104,20 @@ h2 {
     max-width: 800px;
 }
 
+.error-message {
+    font-size: 1.2em;
+    margin: 10px;
+    color: rgba(189, 32, 32, 0.93);
+    background-color: #cccccc;
+    font-weight: bold;
+    padding: 20px;
+}
 
 @media screen and (max-width: 800px) {
     .outer-section-topics {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        /*background-color: #213547;*/
         z-index: -2;
     }
 
@@ -123,11 +126,21 @@ h2 {
         flex-direction: column;
     }
 
+    .header-container p {
+        max-width: 400px;
+        font-size: 0.8em;
+    }
+
     h2 {
         margin-top: 10px;
-        padding:50px;
         z-index: 1;
-        clip-path: polygon(5% 30%, 70% 0%, 101% 50%, 30% 100%);
+
+    }
+
+    .topic {
+        padding: 20px;
+        margin: 10px;
+        flex-basis: 400px;
     }
 
     .disclaimer-homepage {
@@ -135,4 +148,6 @@ h2 {
         color: white;
         margin:10px;
     }
+
+
 }

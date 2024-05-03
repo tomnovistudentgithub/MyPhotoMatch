@@ -15,13 +15,11 @@ import AuthContextProvider from "./contexts/AuthContext.jsx";
 import PinnedPhotosProvider from "./contexts/PinnedPhotosProvider.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
     return (
         <AuthContextProvider>
             <Router>
             <PinnedPhotosProvider>
-
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
@@ -34,7 +32,6 @@ function App() {
                         <Route path="/admin" element={<AdminRoute />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
-
             </PinnedPhotosProvider>
             </Router>
         </AuthContextProvider>

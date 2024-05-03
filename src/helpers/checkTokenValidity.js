@@ -5,11 +5,8 @@ function checkTokenValidity() {
 
     if (token) {
         const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000; // Get current time in seconds
+        const currentTime = Date.now() / 1000;
 
-
-        console.log(decodedToken.exp);
-        console.log(currentTime);
         if (decodedToken.exp < currentTime) {
             localStorage.removeItem('token');
             window.location.href = '/login';

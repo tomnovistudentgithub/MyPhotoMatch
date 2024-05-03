@@ -33,6 +33,7 @@ function AdminPortal() {
             if (error.response && error.response.status === 400) {
                 setError('No photo available for this user');
             }
+
         }
     };
 
@@ -40,7 +41,7 @@ function AdminPortal() {
         return <div>Loading...</div>;
     }
 
-    if (userRole !== 'ADMIN') {
+    if (!isAdmin) {
         return <h1>You do not have permission to view this page</h1>;
     }
 

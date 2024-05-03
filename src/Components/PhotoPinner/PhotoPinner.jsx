@@ -7,7 +7,7 @@ import { faThumbtack, faBan } from '@fortawesome/free-solid-svg-icons';
 import styles from './PhotoPinner.module.css';
 
 function PhotoPinner({ photo, isTopicPage }) {
-    const { pinnedPhotos, setPinnedPhotos, togglePinPhoto } = useContext(PinnedPhotosContext);
+    const { pinnedPhotos, togglePinPhoto } = useContext(PinnedPhotosContext);
     const { isLoggedIn } = useContext(AuthContext);
     const [isPhotoPinned, setIsPhotoPinned] = useState(false);
     const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faUser, faCamera, faIdBadge, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faMessage} from '@fortawesome/free-regular-svg-icons';
 import getUserRoleEmail from "../../api/noviBackendApi/getUserRoleEmail.js";
-import uploadPhoto from "../../helpers/uploadPhoto.js";
+import preparePhotoForUpload from "../../helpers/preparePhotoForUpload.js";
 import uploadPhotoToApi from "../../api/noviBackendApi/uploadPhotoToApi.js";
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 
@@ -64,20 +64,22 @@ function Contact() {
 
     const onSubmit = async data => {
         const photoFile = data.photoUpload[0];
-        const result = uploadPhoto(username, photoFile);
+        const result = preparePhotoForUpload(username, photoFile);
 
         if (typeof result === 'string') {
             setErrorPhotoUpload(result);
         } else {
             try {
-                const response = await uploadPhotoToApi(username, result);
-                if (response && response.status === 200) {
+                const {data: response, error} = await uploadPhotoToApi(username, result);
+                if (response && response.endsWith(username)) {
                     setFormData({
                         name: data.name,
                         email: data.email,
                         message: data.message,
                         photoUpload: photoFile.name
                     });
+                    setErrorPhotoUpload('');
+                    setFormError('');
                     setIsModalOpen(true);
                 } else {
                     throw new Error(' Photo upload failed. Please try again.');
@@ -94,16 +96,13 @@ function Contact() {
         }
     };
 
-
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
-
     return (
         <div className={styles['parent-form-wrapper']}>
             <div className={styles['form-wrapper']}>
-
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Contact</h1>

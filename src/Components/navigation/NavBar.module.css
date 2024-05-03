@@ -1,5 +1,5 @@
 .flex-container {
-    background-color: rgba(100, 108, 255, 0.7);
+    background-color: rgba(100, 108, 255, 0.6);
 }
 
 .nav-wrapper {
@@ -16,8 +16,8 @@ nav {
 }
 
 .photo-match-logo {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 .nav-links {
@@ -32,55 +32,52 @@ nav ul {
     gap: 30px;
     margin: 5px;
     justify-content: flex-end;
+    align-items: center;
+    align-content: center;
 }
 
-
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 nav li {
-    flex-basis: 20px;
     text-align: center;
     list-style: none;
-    font-size: 0.8rem;
-    color: white;
+    font-size: 1rem;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    align-content: center;
-    transform: skewX(0deg);
 }
-
-.thumbtack-icon-navbar {
-    font-size: 1.5rem;
-    transform: skewX(20deg);
-}
-
-
 
 .nav-icon {
     display: inline;
     padding: 3px;
-    font-size: 1.5em;
+    transition: transform 0.3s ease;
+    z-index: 2;
+    font-size: 1.7em;
+}
+
+ .nav-icon:active {
+    transform: scale(1.5);
+    max-height: 100%;
+    max-width: 100%;
+    transition: none;
 }
 
 .nav-text {
     display: inline;
-}
-
-nav li:hover {
-    background-color: rgba(61, 4, 168, 0.9);
-    box-shadow: #1a1a1a 0px 0px 20px;
-    transition: all 0.3s ease;
-    padding: 20px;
-}
-
-.thumbtack-icon-navbar:hover {
-    font-size: 1.5rem;
-    transform: skewX(-20deg);
+    z-index: 1;
+    font-size: 0.9em;
 }
 
 .active-link {
     color: white;
+}
+
+.active-link .nav-text {
+    color: white;
+    display: none;
 }
 
 a {
@@ -108,7 +105,7 @@ a:hover {
 }
 
 .login-logout-button {
-    flex-basis: 20px;
+
     text-align: center;
     list-style: none;
     font-size: 1rem;
@@ -118,7 +115,6 @@ a:hover {
     border-radius: 10px;
     transition: all 0.3s ease;
     align-content: center;
-    transform: skewX(0deg);
     margin-left: auto;
     background-color: transparent;
 
@@ -126,9 +122,8 @@ a:hover {
 
 .login-logout-button:hover {
     background-color: rgba(61, 4, 168, 0.9);
-    box-shadow: #1a1a1a 0px 0px 20px;
     transition: all 0.3s ease;
-    padding: 20px;
+
 }
 
 @media (max-width: 1000px) {
@@ -186,7 +181,6 @@ a:hover {
     nav li:hover {
         background-color: rgba(61, 4, 168, 0.9);
         transform: skewX(0deg);
-        box-shadow: #1a1a1a 0px 0px 20px;
         transition: all 0.3s ease;
         padding: 17px;
     }

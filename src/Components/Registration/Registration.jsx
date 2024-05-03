@@ -1,20 +1,19 @@
-import React, {useContext, useState} from 'react';
-// import './Registration.modules.css';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext.jsx';
-import { useNavigate } from 'react-router-dom';
+import React, {useContext, useEffect, useState} from 'react';
 import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
-
-
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../../contexts/AuthContext.jsx";
 
 function Registration() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { login } = useContext(AuthContext);
+    const { login, user, isLoggedIn } = useContext(AuthContext);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const navigate = useNavigate();
+    const isUserLoggedIn = typeof isLoggedIn === 'function' ? isLoggedIn() : isLoggedIn;
+
+
     const handleSubmit = async (event) => {
 
         event.preventDefault();
@@ -42,43 +41,45 @@ function Registration() {
                     navigate('/');
                 }, 2000);
             } else {
-                console.log('No proper response received from the server.');
+                throw new Error('Server responded with a non-2xx status code');
             }
 
         } catch (error) {
-            if (error.response) {
-                console.log('Response Status:', error.response.status);
-                console.log('response data', error.response.data);
-            }
+            let errorMessage = 'An unknown error occurred while creating the user.';
 
-            if (error.response && error.response.data) {
-                setErrorMessage(error.response.data);
+            if (error.response) {
+                errorMessage = error.response.data || 'An error occurred while creating the user.';
+            } else if (error.request) {
+                errorMessage = 'No response received from the server. Please check your network connection.';
             } else {
-                setErrorMessage('An error occurred while creating the user.');
+                errorMessage = 'an error occured while making the request to the server.';
             }
-            console.error('Error creating user:', error.response.status, error.response.data);
+            setErrorMessage(errorMessage);
         }
+
     };
 
     return (
         <form onSubmit={handleSubmit}>
             {errorMessage && <h4>{errorMessage}</h4>}
             {showSuccessMessage && <h4>Registration successful! Logging in and redirecting...</h4>}
+            {isUserLoggedIn && <h4>You are already logged in and registered.</h4>}
             <label>
                 Username:
-                <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                <input type="text" value={username} onChange={e => setUsername(e.target.value)} disabled={isUserLoggedIn} />
             </label>
             <label>
                 Email:
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} disabled={isUserLoggedIn} />
             </label>
             <label>
                 Password:
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} disabled={isUserLoggedIn} />
             </label>
-            <input type="submit" value="Register" />
+            <input type="submit" value="Register" disabled={isUserLoggedIn} />
         </form>
     );
 }
+
 
 export default Registration;

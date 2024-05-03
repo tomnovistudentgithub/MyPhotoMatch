@@ -1,4 +1,4 @@
-function uploadPhoto(username, photoFile) {
+function preparePhotoForUpload(username, photoFile) {
 
 
     if (!photoFile) {
@@ -11,10 +11,9 @@ function uploadPhoto(username, photoFile) {
     } else {
         const formData = new FormData();
         formData.append("file", photoFile);
-        console.log(formData);
         return formData;
     }
 
 }
 
-export default uploadPhoto;
+export default preparePhotoForUpload;

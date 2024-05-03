@@ -10,8 +10,6 @@
   padding: 20px;
 }
 
-
-
 .photo-card-image-container {
   position: relative;
 }
@@ -19,7 +17,6 @@
 .photo-card-image {
   width: 300px;
   height: 400px;
-
   border: 7px solid #000000;
 }
 

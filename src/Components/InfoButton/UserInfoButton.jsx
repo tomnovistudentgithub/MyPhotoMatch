@@ -33,11 +33,11 @@ function UserInfoButton({ username }) {
                 setError(null);
 
             } else {
-                throw new Error('Error getting user info else');
+                throw new Error('User cannot be retrieved');
             }
         } catch (error) {
             setUserInfo(null);
-            setError('Error getting user info catch');
+            setError('User cannot be retrieved');
 
         }
     };

@@ -1,9 +1,8 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import getUserRole from "../helpers/getUserRole.js";
 import getUserFromTokenAndPassToken from "../helpers/getUserFromTokenAndPassToken.js";
 import getUserRoleEmail from "../api/noviBackendApi/getUserRoleEmail.js";
 import axios from "axios";
-import PinnedPhotosContext from "./PinnedPhotoContext.js";
+import {jwtDecode} from 'jwt-decode';
 
 export const AuthContext = createContext();
 
@@ -11,21 +10,18 @@ function AuthContextProvider({ children }) {
     const [authState, setAuthState] = useState({user: null, status: `pending`});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [setError] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
 
         if (token) {
-           const userFromStorage = getUserFromTokenAndPassToken();
-           const userAndToken = {userFromStorage, token }
-
 
             const fetchUser = async () => {
 
                 try {
-                    const user = await getUserRoleEmail(userAndToken);
+                    const user = await getUserRoleEmail();
                     if (user) {
                         setAuthState({
                             user: user,
@@ -38,7 +34,6 @@ function AuthContextProvider({ children }) {
                     }
                     setLoading(false);
                 } catch (error) {
-                    console.error('Error fetching user:', error);
                     setError(error.message);
                 }
             };
@@ -49,8 +44,6 @@ function AuthContextProvider({ children }) {
                 status: 'done',
             });
             setIsLoggedIn(false);
-            console.log(authState);
-
         }
         setLoading(false);
     }, []);
@@ -83,19 +76,16 @@ function AuthContextProvider({ children }) {
             if (response.status === 200) {
                 const data = response.data;
                 localStorage.setItem('token', data.jwt);
+                const decodedToken = jwtDecode(data.jwt);
                 setIsLoggedIn(true);
                 setAuthState({ user: enteredUsername, status: 'done' });
-                console.log('User is logged in!');
+                setIsAdmin(decodedToken.role === 'ADMIN');
                 return true;
 
             } else {
-                console.log('Error:', response);
-                console.log(enteredUsername);
                 throw response;
             }
         } catch (error) {
-            console.error('Error:', error);
-            console.log(enteredUsername);
             return false;
         }
     }
@@ -108,7 +98,7 @@ function AuthContextProvider({ children }) {
         setIsAdmin(false);
 
     }
-    console.log('AuthContextProvider authState:', authState);
+
     return (
         <AuthContext.Provider value={ data }>
             {authState.status === 'pending'

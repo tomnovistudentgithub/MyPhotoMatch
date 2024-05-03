@@ -21,8 +21,6 @@ function PhotoCard({ photo }) {
                 {error && <p>{error}</p>}
             </div>
         </div>
-
-
     );
 }
 

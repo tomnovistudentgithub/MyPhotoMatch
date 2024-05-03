@@ -20,7 +20,9 @@ const PinnedPhotosProvider = ({ children }) => {
     const isTopicPage = location.pathname.includes('topic') || location.pathname.includes('mypins');
 
     const fetchPinnedPhotos = async () => {
+        console.log('fetchPinnedPhotos');
         let userInfo = await getUserInfoField();
+        console.log('userInfo', userInfo);
         if (typeof userInfo === 'string') {
             userInfo = [userInfo];
         }
@@ -35,8 +37,7 @@ const PinnedPhotosProvider = ({ children }) => {
     }, [isLoggedIn]);
 
     useEffect(() => {
-        console.log(location.pathname);
-        console.log(isTopicPage);
+
         fetchPinnedPhotos();
     }, [isLoggedIn]);
 

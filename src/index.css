@@ -61,7 +61,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);*/
 }
 button:hover {
   color: coral;

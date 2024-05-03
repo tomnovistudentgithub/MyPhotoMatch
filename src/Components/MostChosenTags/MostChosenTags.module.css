@@ -1,0 +1,14 @@
+.most-chosen-tags-container {
+    margin-bottom: 50px;
+
+}
+
+.tag {
+    display: inline-block;
+    background-color: rgba(220, 220, 220, 0.45);
+    color: #333;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}

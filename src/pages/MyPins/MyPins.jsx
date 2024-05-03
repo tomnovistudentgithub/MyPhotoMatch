@@ -4,8 +4,9 @@ import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 import {useNavigate} from "react-router-dom";
 import styles from '../MyPins/MyPins.module.css';
-import MostChosenTags from "../../Components/MostChosenTags.jsx"; 
+import MostChosenTags from "../../Components/MostChosenTags/MostChosenTags.jsx";
 import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
+import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
 function MyPins () {
     const { isLoggedIn } = useContext(AuthContext);
     const { tagCounts, pinnedPhotos } = useContext(PinnedPhotosContext);
@@ -15,6 +16,7 @@ function MyPins () {
 
 
     return (
+        <>
         <div className={styles['my-pins-container']}>
             {pinnedPhotos.length > 0 ? (
                 <>
@@ -30,17 +32,20 @@ function MyPins () {
                             </div>
                         ))}
                     </div>
+
                     <div className={styles['mypins-tag-container']}>
-                        <MostChosenTags tagCounts={tagCounts}/>
                         <h1 className={styles['my-pins-h1-tagcounts']}>Tag counts</h1>
+                        <MostChosenTags tagCounts={tagCounts}/>
                     </div>
                 </>
-
             ) : (
                 <p className={styles['no-pins-p']}>Please start pinning more items and return to this page to see your pins. </p>
             )}
         </div>
+            <ScrollIndicator/>
+        </>
     );
+
 }
 
 export default MyPins;

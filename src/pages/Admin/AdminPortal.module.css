@@ -15,6 +15,7 @@ color: rgba(243, 232, 214, 0.98);
     background-color: rgb(30, 69, 194);
     padding: 20px;
     border-radius: 10px;
+    flex-basis: 1200px;
 }
 
 

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import styles from './MostChosenTags.module.css';
 
 function MostChosenTags({tagCounts}) {
 
@@ -8,12 +8,11 @@ function MostChosenTags({tagCounts}) {
         .filter(([tag, count]) => count > 3);
 
     return (
-        <div>
-            <h4>Style of chosen photos</h4>
+        <div className={styles['most-chosen-tags-container']}>
             {chosenTags.length > 0 ? (
                 <ul>
                     {chosenTags.map(([tag, count]) => (
-                        <li key={tag}>{tag}: {count}</li>
+                        <li key={tag} className={styles.tag}>{tag}: {count}</li>
                     ))}
                 </ul>
             ) : (
