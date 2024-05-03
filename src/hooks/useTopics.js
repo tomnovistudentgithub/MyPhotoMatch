@@ -13,7 +13,6 @@ export const useTopics = () => {
                 setTopics(topicData);
                 setIsLoading(false);
             } catch (error) {
-                console.error(error);
                 setIsLoading(false);
                 setError(error.message);
             }

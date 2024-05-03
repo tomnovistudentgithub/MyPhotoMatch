@@ -1,26 +1,24 @@
 import unsplashedEndpoint from './unsplashedEndpoint.js';
+import apiHandler from "../apiHelpers/apiHandler.js";
+import getRandomElements from "../../helpers/getRandomElements.js";
 
 export const getTopics = async (page, itemsPerPage) => {
-
-
-    try {
-        const response = await unsplashedEndpoint.get('/topics?per_page=20');
-        console.log("getTopics: ", response.data);
-
+        const response = await apiHandler(
+            unsplashedEndpoint,
+            'get',
+            '/topics',
+            null,
+            'json',
+            {
+                params: {
+                    per_page: 20,
+                }
+            }
+        );
         let topics = response.data;
-        let randomTopics = [];
-
-        for (let i = 0; i < itemsPerPage; i++) {
-            const randomIndex = Math.floor(Math.random() * topics.length);
-            const [topic] = topics.splice(randomIndex, 1);
-            randomTopics.push(topic);
-        }
+        let randomTopics = getRandomElements(topics, itemsPerPage);
         return randomTopics;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-
-
-
 }
+
+
+

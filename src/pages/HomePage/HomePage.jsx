@@ -26,7 +26,7 @@ function HomePage() {
         <div className={styles['outer-section-homepage']}>
             <div className={styles['header-container']}>
                 <h2>Photo topics</h2>
-                <p> Here are some of the most popular topics. Click on the topic to discover and pin photos or scroll
+                <p>Here are some of the most popular topics. Click on the topic to discover and pin photos or scroll
                     downward to see photos from all topics</p>
             </div>
 

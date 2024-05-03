@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
-import unsplashedEndpoint from '../../api/unsplashedApi/unsplashedEndpoint.js';
 import { getTopic } from '../../api/unsplashedApi/getTopic.js';
 import { getTopicPhotos } from '../../api/unsplashedApi/getTopicPhotos.js'
 import styles from './TopicPhotos.module.css';
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
 import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
+import photoOrientation from "../../helpers/photoOrientation.js";
 
 function TopicPhotos() {
     const { topicId } = useParams();
@@ -33,24 +33,12 @@ function TopicPhotos() {
     useEffect(() => {
         const fetchPhotos = async () => {
             try {
-                const data = await getTopicPhotos(topicId, 9);
-                const photosWithOrientation = data.map(photo => {
-                    const aspectRatio = photo.width / photo.height;
-                    let orientation = '';
-                    if (aspectRatio > 1) {
-                        orientation = 'landscape';
-                    } else if (aspectRatio < 1) {
-                        orientation = 'portrait';
-                    } else {
-                        orientation = 'square';
-                    }
-                    return {...photo, orientation};
-                });
-                setPhotos(photosWithOrientation);
+                const topicPhotos = await getTopicPhotos(topicId, 9);
+                const topicPhotosWithOrientation = photoOrientation(topicPhotos);
+                setPhotos(topicPhotosWithOrientation);
                 setShowPhotos(true);
                 setIsLoading(false);
             } catch (error) {
-
                 if (error.response && error.response.status === 403 && error.response.data === 'Rate Limit Exceeded') {
                     setError('Rate limit exceeded. Please try again later.');
                 } else {
@@ -60,7 +48,6 @@ function TopicPhotos() {
                 throw error;
             }
         };
-
         fetchPhotos();
     }, [topicId]);
 
@@ -76,15 +63,10 @@ function TopicPhotos() {
     if (topic.cover_photo) {
         coverPhotoUrl = topic.cover_photo.urls.regular;
     } else if (topic.photos && topic.photos.length > 0) {
-
         coverPhotoUrl = topic.photos[0].urls.small;
     } else {
-
         coverPhotoUrl = null;
-        console.error('No cover photo available for this topic');
     }
-
-
 
     return (
         <div className={styles['topic-photos-wrapper']} style={{backgroundImage: `url(${coverPhotoUrl})`}}>
@@ -112,13 +94,10 @@ function TopicPhotos() {
                                 );
                             })}
                         </div>
-
                     )}
                 </div>
                 <ScrollIndicator/>
-
             </div>
-
         </div>
     );
 }

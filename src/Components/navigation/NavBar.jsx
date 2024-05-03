@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styles from './NavBar.module.css';
 import {AuthContext} from "../../contexts/AuthContext.jsx";
@@ -12,7 +12,7 @@ function NavBar() {
     let location = useLocation();
     let navigate = useNavigate();
     const { isLoggedIn, logout, isAdmin } = useContext(AuthContext);
-
+    const [scrolled, setScrolled] = useState(false);
     const handleLoginClick = () => {
         navigate("/login", { state: { from: location.pathname } });
     };
@@ -21,6 +21,7 @@ function NavBar() {
         logout();
         navigate("/");
     };
+
 
     return (
         <div className={styles['flex-container']}>
