@@ -56,8 +56,8 @@
       "id": 8,
       "name": "Foto Fanaat",
       "email": "123@example.com",
-        "workarea": "Gelderland" ,
-        "style": ["garden", "flower", "plants", "botanical"]
+      "workarea": "Gelderland" ,
+      "style": ["garden", "flower", "plants", "botanical"]
     }
   ]
 }

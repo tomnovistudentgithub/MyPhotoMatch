@@ -184,6 +184,15 @@ a:hover {
         box-sizing: border-box;
     }
 
+    nav ul {
+        margin-left: 15px;
+        gap: 20px;
+    }
+
+    .photo-match-logo {
+        width: 35px;
+        height: 35px;
+    }
 
     .nav-icon {
         display: inline;

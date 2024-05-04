@@ -3,18 +3,19 @@ import { useForm } from 'react-hook-form';
 import styles from './Contact.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faUser, faCamera, faIdBadge, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { faUserCircle, faMessage} from '@fortawesome/free-regular-svg-icons';
+import { faUser as faUserRegular, faUserCircle, faMessage} from '@fortawesome/free-regular-svg-icons';
 import getUserRoleEmail from "../../api/noviBackendApi/getUserRoleEmail.js";
-import preparePhotoForUpload from "../../helpers/preparePhotoForUpload.js";
+import uploadPhoto from "../../api/noviBackendApi/uploadPhotoToApi.js/";
 import uploadPhotoToApi from "../../api/noviBackendApi/uploadPhotoToApi.js";
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
-
-import { matchPhotographersToUserTags } from '../../helpers/matchPhotographersToUserTags';
+import matchPhotographersToUserTags from "../../helpers/matchPhotographersToUserTags.js";
+import preparePhotoForUpload from "../../helpers/preparePhotoForUpload.js";
+import {AuthContext} from "../../contexts/AuthContext.jsx";
 
 
 
 function Contact() {
-    const { register, handleSubmit,setValue, getValues, formState: { errors } } = useForm();
+    const { register,  handleSubmit,setValue, getValues, formState: { errors } } = useForm();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({});
     const [username, setUsername] = useState('');
@@ -26,11 +27,13 @@ function Contact() {
     const [filteredPhotographers, setFilteredPhotographers] = useState([]);
     const [photographersInArea, setPhotographersInArea] = useState([]);
     const [formError, setFormError] = useState('');
-    const [error, setError] = useState(null);
+    const { setResetForm } = useContext(AuthContext);
+
 
     useEffect(() => {
         if (tagCounts) {
             const matchingPhotographers = matchPhotographersToUserTags({ tagCounts });
+
             setFilteredPhotographers(matchingPhotographers);
             const uniqueWorkAreas = [...new Set(matchingPhotographers.map(photographer => photographer.workarea))];
             setWorkAreas(uniqueWorkAreas);
@@ -45,8 +48,10 @@ function Contact() {
 
     useEffect(() => {
         const fetchUserData = async () => {
+            console.log('fetchUserData is being called');
             try {
                 const response = await getUserRoleEmail();
+
                 if (response) {
                     setValue('userName', `${response.username}`);
                     setUsername(`${response.username}`);
@@ -54,7 +59,7 @@ function Contact() {
                 }
 
             } catch (error) {
-           setError(error.message);
+    throw new Error('There was a problem with the API call:', error);
             }
         };
         fetchUserData();
@@ -70,24 +75,23 @@ function Contact() {
             setErrorPhotoUpload(result);
         } else {
             try {
-                const {data: response, error} = await uploadPhotoToApi(username, result);
-                if (response && response.endsWith(username)) {
+                const response = await uploadPhotoToApi(username, result);
+                console.log('Response from API uploadPhotoToApi:', response);
+                if (response) {
                     setFormData({
                         name: data.name,
                         email: data.email,
                         message: data.message,
                         photoUpload: photoFile.name
                     });
-                    setErrorPhotoUpload('');
-                    setFormError('');
                     setIsModalOpen(true);
                 } else {
-                    throw new Error(' Photo upload failed. Please try again.');
+                    throw new Error(' ');
                 }
             } catch (error) {
-
                 if (error.response) {
                     setErrorPhotoUpload('Error uploading photo: ' + error.message);
+                    console.log(errorPhotoUpload);
                 } else {
                     setErrorPhotoUpload('Error uploading photo: ' + error.message);
                 }
@@ -96,98 +100,116 @@ function Contact() {
         }
     };
 
+
+    useEffect(() => {
+        setResetForm(() => resetForm);
+    }, [setResetForm]);
+
+    const resetForm = () => {
+        setValue('name', '');
+        setValue('userName', '');
+        setValue('email', '');
+        setValue('message', '');
+        setSelectedArea('');
+        setPhotographer('');
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
+
     return (
-        <div className={styles['parent-form-wrapper']}>
-            <div className={styles['form-wrapper']}>
+            <div className={styles["parent-form-wrapper"]}>
+                <div className={styles["form-wrapper"]}>
 
-                <form className={`${styles['form']} ${styles['contact-form']}`} onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Contact</h1>
-                    <p>Want to get in touch with a photographer of your choice? You are at the right place!</p>
 
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faUser}/>
-                        <input {...register("name", {required: true})} placeholder="Name"/>
-                        {errors.name && <p>This field is required</p>}
-                    </div>
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faUserCircle}/>
-                        <input {...register("userName", {required: false})}
-                               placeholder="Username"
-                               disabled={!!username}
-                        />
-                        {error && error.message && <p>{error.message}</p>}
-                    </div>
+                    <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
+                        <h1>Contact</h1>
+                        <p>Want to get in touch with a photographer of your choice? You are at the right place!
+                            Make sure you have pinned enough photos so we can determine the best match. Once you have
+                            enough pins you can select a location first, followed by the photographer.</p>
 
-                    {errors.userName && <p>error</p>}
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faEnvelope}/>
-                        <input {...register("email", {required: true})} placeholder="Email"/>
-                    </div>
-                    {errors.email && <p>This field is required</p>}
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faUser}/>
+                            <input {...register("name", {required: true})} placeholder="Name"/>
+                            {errors.name && <p>This field is required</p>}
+                        </div>
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faUserCircle}/>
+                            <input {...register("userName", {required: false})}
+                                   placeholder="Username"
+                                   disabled={!!username}
+                            />
+                        </div>
 
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faMessage}/>
-                        <textarea className={styles['textarea']} {...register("message", {required: true})} placeholder="Message"/>
-                        {errors.message && <p>This field is required</p>}
-                    </div>
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faMapMarkerAlt}/>
-                        <select className={styles['select-input']} required onChange={(e) => setSelectedArea(e.target.value)}>
-                            <option value="">Select area</option>
-                            {workAreas.map((area, index) => (
-                                <option key={index} value={area}>
-                                    {area}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faCamera}/>
+                        {errors.userName && <p>error</p>}
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faEnvelope}/>
+                            <input {...register("email", {required: true})} placeholder="Email"/>
+                        </div>
+                        {errors.email && <p>This field is required</p>}
 
-                        <input type="file" {...register("photoUpload", {required: true})} />
-                        <label>JPG or PNG</label>
-                        {errorPhotoUpload && <p>{errorPhotoUpload}</p>}
-                        {errors.photoUpload && <p>This field is required</p>}
-                    </div>
-                    <div className={styles['input-label']}>
-                        <FontAwesomeIcon icon={faIdBadge}/>
-                        <label htmlFor="photographer">Choice of photographer by chosen photos and living area: </label>
-                        <select className={styles['select-input']} required onChange={(e) => setPhotographer(e.target.value)}>
-                            <option value="">Select a photographer</option>
-                            {photographersInArea.map((photographer, index) => (
-                                <option key={index} value={photographer.name}>
-                                    {photographer.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faMessage}/>
+                            <textarea {...register("message", {required: true})} placeholder="Message"
+                                      className={styles.textarea}/>
+                            {errors.message && <p>This field is required</p>}
+                        </div>
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faMapMarkerAlt}/>
+                            <select id="workArea" required onChange={(e) => setSelectedArea(e.target.value)}
+                                    className={styles["select-input"]}>
+                                <option value="">Select area photoshoot</option>
+                                {workAreas.map((area, index) => (
+                                    <option key={index} value={area}>
+                                        {area}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faIdBadge}/>
+                            <select id="photographer" required onChange={(e) => setPhotographer(e.target.value)}
+                                    className={styles["select-input"]}>
+                                <option value="">Select a photographer</option>
+                                {photographersInArea.map((photographer, index) => (
+                                    <option key={index} value={photographer.name}>
+                                        {photographer.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className={styles["input-label"]}>
+                            <FontAwesomeIcon icon={faCamera}/>
+                            <input className={styles["photo-upload"]}
+                                   type="file" {...register("photoUpload", {required: true})} />
 
-                    <button type="submit">Submit</button>
-                </form>
-                {formError && <p>{formError}</p>}
+                            {errorPhotoUpload && <p>{errorPhotoUpload}</p>}
+                            {errors.photoUpload && <p>This field is required</p>}
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                    {formError && <p>{formError}</p>}
 
-                {isModalOpen && (
-                    <div className={styles['modal']}>
-                        <div className={styles['modal-content']}>
-                            <h3>Thank you for your submission, we'll get back to you!</h3>
-                            <p>Your submission:</p>
-                            <p>Name: {formData.name}</p>
-                            <p>Email: {formData.email}</p>
+                    {isModalOpen && (
+                        <div className={styles.modal}>
+                            <div className={styles["modal-content"]}>
+                                <h3>Thank you for your submission, we'll get back to you!</h3>
+                                <p>Your submission:</p>
+                                <p>Name: {formData.name}</p>
+                                <p>Email: {formData.email}</p>
                             <p>Message: {formData.message}</p>
                             <p>Photo: {formData.photoUpload}</p>
                             <p>Work area: {selectedArea}</p>
                             <p>Photographer: {photographer}</p>
-                            <button className={styles['modalButton']} onClick={closeModal}>X</button>
+                            <button className="modalButton" onClick={closeModal}>X</button>
                         </div>
                     </div>
                 )}
+                </div>
             </div>
-        </div>
-    );
+        );
 }
 
 export default Contact;

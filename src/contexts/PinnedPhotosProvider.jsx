@@ -37,6 +37,12 @@ const PinnedPhotosProvider = ({ children }) => {
     }, [isLoggedIn]);
 
     useEffect(() => {
+        if (!isLoggedIn) {
+            setTagCounts({});
+        }
+    }, [isLoggedIn]);
+
+    useEffect(() => {
 
         fetchPinnedPhotos();
     }, [isLoggedIn]);

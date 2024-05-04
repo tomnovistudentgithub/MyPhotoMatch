@@ -12,6 +12,7 @@ function AuthContextProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const [setError] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [resetForm, setResetForm] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -58,6 +59,8 @@ function AuthContextProvider({ children }) {
         isAdmin: isAdmin,
         login: login,
         logout: logout,
+        resetForm: resetForm,
+        setResetForm: setResetForm,
     };
 
 
@@ -97,7 +100,11 @@ function AuthContextProvider({ children }) {
         setIsLoggedIn(false);
         setIsAdmin(false);
 
+        if (resetForm) {
+            resetForm();
+        }
     }
+
 
     return (
         <AuthContext.Provider value={ data }>

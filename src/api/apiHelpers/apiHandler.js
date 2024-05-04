@@ -39,6 +39,7 @@ async function apiHandler(axiosInstance, method, endpoint, data = null, response
                 return response;
             }
             return { data: response.data, error: null };
+
         } else {
             throw new Error('Server responded with a non-2xx status code');
         }
