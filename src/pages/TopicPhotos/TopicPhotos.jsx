@@ -6,7 +6,7 @@ import styles from './TopicPhotos.module.css';
 import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
 import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
-import photoOrientation from "../../helpers/photoOrientation.js";
+import {photoOrientation} from "../../helpers/orientation.js";
 
 function TopicPhotos() {
     const { topicId } = useParams();

@@ -2,13 +2,14 @@ import React, {useContext, useEffect, useState} from 'react';
 import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
+import styles from './Registration.module.css';
 
 function Registration() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { login, user, isLoggedIn } = useContext(AuthContext);
+    const { login, isLoggedIn } = useContext(AuthContext);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const navigate = useNavigate();
     const isUserLoggedIn = typeof isLoggedIn === 'function' ? isLoggedIn() : isLoggedIn;
@@ -60,24 +61,29 @@ function Registration() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {errorMessage && <h4>{errorMessage}</h4>}
-            {showSuccessMessage && <h4>Registration successful! Logging in and redirecting...</h4>}
-            {isUserLoggedIn && <h4>You are already logged in and registered.</h4>}
-            <label>
-                Username:
-                <input type="text" value={username} onChange={e => setUsername(e.target.value)} disabled={isUserLoggedIn} />
-            </label>
-            <label>
-                Email:
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} disabled={isUserLoggedIn} />
-            </label>
-            <label>
-                Password:
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} disabled={isUserLoggedIn} />
-            </label>
-            <input type="submit" value="Register" disabled={isUserLoggedIn} />
-        </form>
+        <>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                {errorMessage && <h4>{errorMessage}</h4>}
+                {showSuccessMessage && <h4>Registration successful! Logging in and redirecting...</h4>}
+                {isUserLoggedIn && <h4>You are already logged in and registered.</h4>}
+                <label>
+                    Username:
+                    <input type="text" value={username} onChange={e => setUsername(e.target.value)}
+                           disabled={isUserLoggedIn}/>
+                </label>
+                <label>
+                    Email:
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                           disabled={isUserLoggedIn}/>
+                </label>
+                <label>
+                    Password:
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+                           disabled={isUserLoggedIn}/>
+                </label>
+                <input type="submit" value="Register" disabled={isUserLoggedIn}/>
+            </form>
+        </>
     );
 }
 

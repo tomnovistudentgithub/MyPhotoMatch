@@ -104,7 +104,7 @@ function Contact() {
         <div className={styles['parent-form-wrapper']}>
             <div className={styles['form-wrapper']}>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className={`${styles['form']} ${styles['contact-form']}`} onSubmit={handleSubmit(onSubmit)}>
                     <h1>Contact</h1>
                     <p>Want to get in touch with a photographer of your choice? You are at the right place!</p>
 
@@ -131,13 +131,13 @@ function Contact() {
 
                     <div className={styles['input-label']}>
                         <FontAwesomeIcon icon={faMessage}/>
-                        <textarea {...register("message", {required: true})} placeholder="Message"/>
+                        <textarea className={styles['textarea']} {...register("message", {required: true})} placeholder="Message"/>
                         {errors.message && <p>This field is required</p>}
                     </div>
                     <div className={styles['input-label']}>
                         <FontAwesomeIcon icon={faMapMarkerAlt}/>
-                        <select id="workArea" required onChange={(e) => setSelectedArea(e.target.value)}>
-                            <option value="">Select a work area</option>
+                        <select className={styles['select-input']} required onChange={(e) => setSelectedArea(e.target.value)}>
+                            <option value="">Select area</option>
                             {workAreas.map((area, index) => (
                                 <option key={index} value={area}>
                                     {area}
@@ -156,7 +156,7 @@ function Contact() {
                     <div className={styles['input-label']}>
                         <FontAwesomeIcon icon={faIdBadge}/>
                         <label htmlFor="photographer">Choice of photographer by chosen photos and living area: </label>
-                        <select id="photographer" required onChange={(e) => setPhotographer(e.target.value)}>
+                        <select className={styles['select-input']} required onChange={(e) => setPhotographer(e.target.value)}>
                             <option value="">Select a photographer</option>
                             {photographersInArea.map((photographer, index) => (
                                 <option key={index} value={photographer.name}>

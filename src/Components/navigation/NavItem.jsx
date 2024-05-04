@@ -2,11 +2,16 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {NavLink, useLocation} from "react-router-dom";
 import styles from './NavBar.module.css';
 
-function NavItem({ to, icon, text }) {
+function NavItem({ to, icon, text, setIsOpen }) {
     let location = useLocation();
     let isActive = location.pathname === to;
+
+    const handleClick = () => {
+        setIsOpen(false);
+    };
+
     return (
-        <li>
+        <li onClick={handleClick} className={isActive ? styles['active-link'] : ''}>
             <NavLink
                 to={to}
                 className={`${styles['nav-link']} ${isActive ? styles['active-link'] : ''}`}

@@ -11,7 +11,7 @@
     height: 90vh;
 }
 
-form {
+.form {
     display: flex;
     margin:30px;
     flex-direction: column;
@@ -19,26 +19,37 @@ form {
     padding: 20px;
     justify-content: center;
     align-items: center;
+    color: black;
 }
-
-
 
 .input-label {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: flex-start;
     align-items: center;
-    width: 100%;
-    gap: 20px;
+    width: 60%;
+}
+
+.textarea, .input input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.input-label input {
+    margin: 0px;
+}
+
+.select-input{
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 80%;
 }
 
 
-
-
-.input-icon-wrapper {
-    /*display: flex;*/
-    /*align-items: center;*/
-}
 
 .input-icon-wrapper .faEnvelope {
     margin-right: 0px;
@@ -48,7 +59,6 @@ form {
     width: 25px;
     height: 25px;
     margin: 0px;
-
 }
 
 .input-label select {
@@ -64,14 +74,6 @@ svg {
 .svg-inline {
     width: 20px; height: 20px;
 }
-
-
-label {
-    margin-left: 8px;
-    margin-right: 8px;
-
-}
-
 
 
 .modal {

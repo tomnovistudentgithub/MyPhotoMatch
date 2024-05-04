@@ -1,14 +1,19 @@
-function getRandomElements(array, count) {
-    let copyArray = [...array];
-    let randomElements = [];
+function getRandomElements(arr, n) {
 
-    for (let i = 0; i < count; i++) {
-        const randomIndex = Math.floor(Math.random() * copyArray.length);
-        const [element] = copyArray.splice(randomIndex, 1);
-        randomElements.push(element);
+    let result = new Array(n);
+    let len = arr.length;
+    let taken = new Array(len);
+
+    if (n > len)
+        throw new RangeError("getRandomElements: more elements taken than available");
+
+    while (n--) {
+        let x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
     }
 
-    return randomElements;
+    return result;
 }
 
 export default getRandomElements;
