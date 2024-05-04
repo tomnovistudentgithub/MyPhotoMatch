@@ -51,8 +51,6 @@ function AdminPortal() {
             <div className={styles['inner-container-admin']}>
                 <h1>Admin Portal</h1>
                 <p>On the admin page you can request user info and download a users' uploaded photo.</p>
-                <p>Because an admin can handle a bare UX, there is not much styling or polishing up of the data content here.</p>
-                <p>Not just bluntly saying it has been sufficient work to complete the front end and I decided not to put to much effort in this page.</p>
                 <form className={styles['form']}>
                     <label>
                         Username:<br></br>

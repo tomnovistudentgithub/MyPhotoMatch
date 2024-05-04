@@ -75,10 +75,9 @@
     display: block;
 }
 
-svg {
+.input-label svg {
     display: block;
-    margin: 0px;
-
+    margin-right: 10px;
 }
 
 .svg-inline {
