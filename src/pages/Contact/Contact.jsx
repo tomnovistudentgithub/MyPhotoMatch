@@ -203,7 +203,7 @@ function Contact() {
                             <p>Photo: {formData.photoUpload}</p>
                             <p>Work area: {selectedArea}</p>
                             <p>Photographer: {photographer}</p>
-                            <button className="modalButton" onClick={closeModal}>X</button>
+                            <button className={styles.modalButton} onClick={closeModal}>X</button>
                         </div>
                     </div>
                 )}

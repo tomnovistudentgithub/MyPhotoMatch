@@ -40,10 +40,10 @@ function NavBar() {
         };
     }, [navHeight]);
 
+    const hamburgerRef = useRef(null);
+
     const handleDocumentClick = (event) => {
-        console.log('Document was clicked');
-        if (navRef.current && !navRef.current.contains(event.target)) {
-            console.log('Click was outside the navigation');
+        if (isOpen && event.target.tagName !== 'A' && hamburgerRef.current !== event.target)  {
             setIsOpen(false);
         }
     };
@@ -53,7 +53,7 @@ function NavBar() {
         return () => {
             document.removeEventListener('mousedown', handleDocumentClick);
         };
-    }, []);
+    }, [isOpen]);
 
     return (
         <div className={`${styles['flex-container']} ${isOpen ? styles['overlay'] : ''}`} ref={navRef}>
@@ -71,6 +71,7 @@ function NavBar() {
                     </div>
                     {scrolled && (
                         <FontAwesomeIcon
+                            ref={hamburgerRef}
                             icon={faBars}
                             className={`${styles['hamburger-icon']} ${isOpen ? styles['active'] : ''}`}
                             onClick={() => setIsOpen(!isOpen)}  />
@@ -90,8 +91,6 @@ function NavBar() {
                                 className={styles['login-text']}> Login</span></button>
                         )}
                     </div>
-
-
                 </nav>
             </div>
         </div>

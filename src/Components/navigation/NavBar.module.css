@@ -92,6 +92,10 @@ a:hover {
     margin-right: 20px;
 }
 
+.overlay .login-button {
+    margin-right: 0px;
+}
+
 .login-icon {
     display: inline;
 }
@@ -107,7 +111,7 @@ a:hover {
 .login-logout-button {
     text-align: center;
     list-style: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: sandybrown;
     text-transform: uppercase;
     text-decoration: none;
@@ -159,10 +163,10 @@ a:hover {
 
 .overlay nav {
     flex-direction: column;
-    height: 400px;
+    height: 500px;
     align-items: center;
     align-content: center;
-    gap:50px;
+    gap:20px;
     justify-content: center;
     background-color: rgba(83, 91, 242, 0.84);
     margin-left: 0px;
@@ -216,6 +220,14 @@ a:hover {
         display: inline;
         padding: 5px;
         font-size: 1.5em;
+    }
+
+    .overlay .login-icon {
+        padding: 0px;
+    }
+
+    .overlay .login-logout-button {
+        padding: 0px;
     }
 
     .login-icon:hover {

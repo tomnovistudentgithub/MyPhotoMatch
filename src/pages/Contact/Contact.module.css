@@ -35,7 +35,6 @@
     grid-template-columns: 0.2fr 1.8fr;
     justify-items: flex-start;
     align-items: center;
-
 }
 
 .textarea, .input input {
@@ -54,7 +53,6 @@
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 16px;
-
 }
 
 .photo-upload {
@@ -68,11 +66,14 @@
 .input-icon-wrapper svg {
     width: 25px;
     height: 25px;
-
 }
 
 .input-label select {
     display: block;
+}
+
+.input-label p {
+    grid-column-start: 2;
 }
 
 .input-label svg {

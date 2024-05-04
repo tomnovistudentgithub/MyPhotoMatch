@@ -62,6 +62,9 @@ function Registration() {
 
     return (
         <>
+            <div className={styles['form-wrapper']}>
+            <h1>Registration</h1>
+            <p>Register your account here</p>
             <form className={styles.form} onSubmit={handleSubmit}>
                 {errorMessage && <h4>{errorMessage}</h4>}
                 {showSuccessMessage && <h4>Registration successful! Logging in and redirecting...</h4>}
@@ -83,6 +86,7 @@ function Registration() {
                 </label>
                 <input type="submit" value="Register" disabled={isUserLoggedIn}/>
             </form>
+        </div>
         </>
     );
 }
