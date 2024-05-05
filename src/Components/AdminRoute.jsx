@@ -1,5 +1,5 @@
 import AdminPortal from "../pages/Admin/AdminPortal.jsx";
-import Login from "./Login/Login.jsx";
+import Login from "./Auth/Login/Login.jsx";
 import {useContext} from "react";
 import {AuthContext} from "../contexts/AuthContext.jsx";
 

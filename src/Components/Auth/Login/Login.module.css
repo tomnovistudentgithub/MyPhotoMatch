@@ -1,0 +1,108 @@
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.div-wrapper-form {
+    display: flex;
+    flex-basis: 1200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: #f49460 10px solid;
+    margin-top: 50px;
+}
+
+.peek-through-rectangle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 4px solid #f49460;
+    border-radius: 50%;
+    background-color: transparent;
+    top: 20%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.camera-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #f49460;
+    top: 8.5%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 150px;
+    gap: 20px;
+    border-radius: 50%;
+    border: 10px solid #f49460;
+
+}
+
+.form-wrapper h1, .form-wrapper p {
+    margin: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+
+/*.form-grid  {*/
+/*    display: grid;*/
+/*    grid-template-columns: 0.3fr 1fr;*/
+/*    grid-auto-rows: auto;*/
+
+/*}*/
+
+/*.form-grid label {*/
+/*    grid-column: 1;*/
+/*    grid-row: auto;*/
+
+/*}*/
+
+/*.form-grid input {*/
+/*    grid-column: 2;*/
+/*    grid-row: auto;*/
+/*    margin-bottom: 20px;*/
+/*    margin-left: 5px;*/
+/*    height: 25px;*/
+
+/*}*/
+
+.error-feedback {
+    grid-column: 2;
+    grid-row: auto;
+    background-color: rgba(253, 16, 16, 0.32);
+    color: red;
+}
+
+.form-wrapper .login-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+
+
