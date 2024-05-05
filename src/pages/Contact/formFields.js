@@ -42,13 +42,15 @@ export const formFields = [
         placeholder: 'Select area',
         type: 'select',
         icon: faMapMarkerAlt,
-        validation: { required: 'This field is required' }
+        validation: { required: 'This field is required' },
+        getOptions: () => []
     },
     {
         name: 'photographer',
         placeholder: 'Select a photographer',
         type: 'select',
         icon: faIdBadge,
-        validation: { required: 'This field is required' }
+        validation: { required: 'This field is required' },
+        getOptions: () => []
     }
 ];

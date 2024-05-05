@@ -50,6 +50,13 @@
 
 }
 
+.error-message {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    background-color: sandybrown;
+}
 
 .my-pins-container .grid-container .grid-item img {
     width: 100%;

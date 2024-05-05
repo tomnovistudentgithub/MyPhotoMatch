@@ -15,6 +15,9 @@ export const getPhotos = async (page = 1) => {
             }
         }
     );
+    if (response.error) {
+        throw new Error(response.error);
+    }
 
     //promises worden gebruikt om de calls parallel uti te voeren
     const photoDetailsPromises = response.data.map(photo => getPhotoById(photo.id));

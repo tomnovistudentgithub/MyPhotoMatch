@@ -2,8 +2,6 @@ import styles from './MostChosenTags.module.css';
 
 function MostChosenTags({tagCounts}) {
 
-    console.log(tagCounts);
-
     const chosenTags = tagCounts && Object.entries(tagCounts)
         .filter(([tag, count]) => count > 3);
 

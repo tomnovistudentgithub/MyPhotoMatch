@@ -52,7 +52,7 @@ function Login() {
                             </label>
                         ))}
                         {loginError && <p className={styles['error-feedback']}>{loginError}</p>}
-                        <input type="submit" value="Login" className={styles['login-button']}/>
+                        <input type="submit" value="Login" className={styles['button']}/>
                         <p>No account yet? Register your account now <a href="/registration">here</a></p>
                     </form>
                 </div>

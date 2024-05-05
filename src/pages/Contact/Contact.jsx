@@ -27,8 +27,8 @@ function Contact() {
     const [filteredPhotographers, setFilteredPhotographers] = useState([]);
     const [photographersInArea, setPhotographersInArea] = useState([]);
     const [formError, setFormError] = useState('');
-    const { setResetForm } = useContext(AuthContext);
-
+    const { setResetForm, isLoggedIn } = useContext(AuthContext);
+    const minimimPins = 5;
 
     useEffect(() => {
         if (tagCounts) {
@@ -48,7 +48,6 @@ function Contact() {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            console.log('fetchUserData is being called');
             try {
                 const response = await getUserRoleEmail();
 
@@ -76,7 +75,6 @@ function Contact() {
         } else {
             try {
                 const response = await uploadPhotoToApi(username, result);
-                console.log('Response from API uploadPhotoToApi:', response);
                 if (response) {
                     setFormData({
                         name: data.name,
@@ -91,7 +89,6 @@ function Contact() {
             } catch (error) {
                 if (error.response) {
                     setErrorPhotoUpload('Error uploading photo: ' + error.message);
-                    console.log(errorPhotoUpload);
                 } else {
                     setErrorPhotoUpload('Error uploading photo: ' + error.message);
                 }
@@ -122,8 +119,6 @@ function Contact() {
     return (
             <div className={styles["parent-form-wrapper"]}>
                 <div className={styles["form-wrapper"]}>
-
-
                     <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
                         <h1>Contact</h1>
                         <p>Want to get in touch with a photographer of your choice? You are at the right place!
@@ -188,8 +183,10 @@ function Contact() {
                             {errorPhotoUpload && <p>{errorPhotoUpload}</p>}
                             {errors.photoUpload && <p>This field is required</p>}
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={!isLoggedIn || tagCounts < minimimPins}>Submit</button>
                     </form>
+                    {!isLoggedIn && <p>You must be logged in to contact a photographer.</p>}
+
                     {formError && <p>{formError}</p>}
 
                     {isModalOpen && (
@@ -203,7 +200,7 @@ function Contact() {
                             <p>Photo: {formData.photoUpload}</p>
                             <p>Work area: {selectedArea}</p>
                             <p>Photographer: {photographer}</p>
-                            <button className={styles.modalButton} onClick={closeModal}>X</button>
+                            <button className={styles["modalButton"]} onClick={closeModal}>X</button>
                         </div>
                     </div>
                 )}

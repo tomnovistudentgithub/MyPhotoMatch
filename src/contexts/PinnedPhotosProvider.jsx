@@ -44,8 +44,9 @@ const PinnedPhotosProvider = ({ children }) => {
             setLoading(true);
             const validIds = pinnedPhotosIds.filter(id => id !== '');
             const photosPromises = validIds.map(id => getPhotoFromDBWithId(id));
-            let photos = await Promise.all(photosPromises);
-            photos = photos.filter(photo => photo !== null);
+            try {
+                let photos = await Promise.all(photosPromises);
+                photos = photos.filter(photo => photo !== null);
 
             const photosWithDetails = photos.map(photo => {
                 let tags;
@@ -65,7 +66,11 @@ const PinnedPhotosProvider = ({ children }) => {
                 };
             });
             setPinnedPhotos(photosWithDetails);
-            setLoading(false);
+            } catch (error) {
+                setError(error.response.data);
+            } finally {
+                setLoading(false);
+            }
         };
 
         if (pinnedPhotosIds.length > 0) {
@@ -97,14 +102,12 @@ const PinnedPhotosProvider = ({ children }) => {
         try {
             await changeUserInfoField(updatedPinnedPhotos);
             setPinnedPhotosIds(updatedPinnedPhotos);
-
             setError(null);
         } catch (error) {
+
             setError('Failed to pin/unpin photo. Please try again later.');
         }
     }
-
-
 
     return (
         <PinnedPhotosContext.Provider value={{ pinnedPhotos, setPinnedPhotos, togglePinPhoto, fetchPinnedPhotos, tagCounts, error, isTopicPage}}>

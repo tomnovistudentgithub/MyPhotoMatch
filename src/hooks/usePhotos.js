@@ -14,7 +14,12 @@ export const usePhotos = () => {
                 setPhotos(photoData);
                 setIsLoading(false);
             } catch (error) {
-                setError(error.response.data);
+                if (error.response) {
+                    setError(error.response.data);
+                } else {
+                    setError(error.message);
+
+                }
                 setIsLoading(false);
             }
         };

@@ -40,7 +40,7 @@ function TopicPhotos() {
                 setIsLoading(false);
             } catch (error) {
                 if (error.response && error.response.status === 403 && error.response.data === 'Rate Limit Exceeded') {
-                    setError('Rate limit exceeded. Please try again later.');
+                    setError('Rate limit exceeded. Cannot obtain data. Please try again later.');
                 } else {
                     setError(error.message);
                 }

@@ -9,10 +9,13 @@ import PhotoPinner from "../../Components/PhotoPinner/PhotoPinner.jsx";
 import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
 function MyPins () {
     const { isLoggedIn } = useContext(AuthContext);
-    const { tagCounts, pinnedPhotos } = useContext(PinnedPhotosContext);
+    const { tagCounts, pinnedPhotos, isTopicPage, error } = useContext(PinnedPhotosContext);
     const navigate = useNavigate();
-    const { isTopicPage } = useContext(PinnedPhotosContext);
 
+
+    if (error) {
+        return <div className={styles['error-message']}>{error}</div>;
+    }
 
 
     return (

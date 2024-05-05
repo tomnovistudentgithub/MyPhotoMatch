@@ -94,5 +94,32 @@
     margin-top: 20px;
 }
 
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .div-wrapper-form {
+        flex-direction: column;
+        padding: 20px;
+        margin-top: 20px;
+        border: none;
+    }
 
+    .form-wrapper {
+        padding: 20px;
+        border-radius: 20px;
+        border: none
+    }
+
+    .peek-through-rectangle, .camera-button {
+        display: none; /* Hide these elements on small screens */
+    }
+
+    .form-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-grid label, .form-grid input {
+        grid-column: auto;
+        margin-bottom: 10px;
+    }
+}
 

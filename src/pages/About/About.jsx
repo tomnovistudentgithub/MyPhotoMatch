@@ -4,15 +4,33 @@ import styles from './About.module.css';
 
 
 function About() {
+    const [animate, setAnimateTextBox] = useState(false);
+    const [animateHeader, setAnimateHeader] = useState(false);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setAnimateTextBox(true);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setAnimateHeader(true);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
 
         <div className={styles['about-outer-container']}>
 
             <div className={styles['about-inner-container']}>
-                <div className={styles['about-header']}>
+                <div className={`${styles['about-header']} ${animateHeader ? styles.animate : ''}`}>
                     <div className={styles['about-header-inner']}>
+
                         <h1> Ever wondered... </h1>
 
                         <ul>
@@ -25,8 +43,9 @@ function About() {
 
                 <div className={styles['about-text-flex']}>
 
-                    <p className={styles['text-block']}>
-                        <b>My Photo Match</b> aims to bring you in touch with top notch photographers from your surroundings.
+                    <p className={`${styles['text-block']} ${animate ? styles.animate : ''}`}>
+                        <b>My Photo Match</b> aims to bring you in touch with top notch photographers from your
+                        surroundings.
                         By picking your favorite photo's we'll determine the best photographer you can hire closeby.
                         To do this we make use of Photographers data on Unsplashed.
                     </p>
@@ -34,17 +53,16 @@ function About() {
                     <div className={styles['empty-block']}></div>
                     <div className={styles['empty-block']}></div>
 
-                        <p className={styles['text-block']}>
-                                Now it's your time to start using this website!
-                                Make an account on the <a href="/registration">registration page</a> and start pinning your favourite
-                                photos from the homepage or the topic pages.
-                                On the bottom of the My Pins page you can see which styles relate to your photo.
-                                Once you have a nice selection, go to the contact page to get in touch with the
-                                photographers that match your chosen style. Enjoy your photoshoot!
-                            </p>
-                    </div>
-
-
+                    <p className={`${styles['text-block']} ${animate ? styles.animate : ''}`}>
+                        Now it's your time to start using this website!
+                        Make an account on the <a href="/registration">registration page</a> and start pinning your
+                        favourite
+                        photos from the homepage or the topic pages.
+                        On the bottom of the My Pins page you can see which styles relate to your photo.
+                        Once you have a nice selection, go to the contact page to get in touch with the
+                        photographers that match your chosen style. Enjoy your photoshoot!
+                    </p>
+                </div>
 
 
                 <caption>

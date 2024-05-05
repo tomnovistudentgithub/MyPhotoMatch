@@ -2,8 +2,6 @@ import backendEndpoint from "./backendEndpoint.js";
 import apiHandler from "../apiHelpers/apiHandler.js";
 
 async function uploadPhotoToApi(username, formData) {
-    console.log('uploadPhotoToApi username:', username);
-    console.log('uploadPhotoToApi formData:', formData);
 
      if (!formData) {
         throw new Error('No file provided');
@@ -20,7 +18,12 @@ async function uploadPhotoToApi(username, formData) {
             'Accept': '*/*'
         }
     );
+    if (response.error) {
+        throw new Error(response.error);
+    }
+
     return response;
 }
+
 
 export default uploadPhotoToApi;
