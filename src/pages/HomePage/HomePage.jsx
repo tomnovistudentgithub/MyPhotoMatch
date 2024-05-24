@@ -58,12 +58,10 @@ function HomePage() {
                     </div>
                     {error && <div className={styles['error-message']}>{error}</div>}
                     <p className={styles['disclaimer-homepage']}> *Please note that I use a developers license of the
-                        API and not a
-                        production license. Therefore I have a very limited rate limit so please be gentle in hitting
+                        API. Therefore I have a very limited rate limit so please be gentle in hitting
                         the
-                        next button or you'll need to until the next full hour before data can be obtained. Over the course of some time these photos
-                        will
-                        change. So if you revisit you have more to pin!</p>
+                        next button or you'll potentially need to wait for quite some while before data can be obtained. Over the course of some time these photos
+                        will change. So if you revisit you have more to pin!</p>
                 </div>
                 <section className={styles['outer-section-photos-homepage']}>
                     {photos.map((photo) => (

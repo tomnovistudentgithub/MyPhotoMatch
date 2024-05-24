@@ -155,7 +155,8 @@ function Contact() {
                             <FontAwesomeIcon icon={faMapMarkerAlt}/>
                             <select id="workArea" required onChange={(e) => setSelectedArea(e.target.value)}
                                     className={styles["select-input"]}>
-                                <option value="">Select area photoshoot</option>
+                                <option
+                                    value="">{workAreas.length > 0 ? "Select area photoshoot" : "Pin more photos to see areas"}</option>
                                 {workAreas.map((area, index) => (
                                     <option key={index} value={area}>
                                         {area}
@@ -167,7 +168,8 @@ function Contact() {
                             <FontAwesomeIcon icon={faIdBadge}/>
                             <select id="photographer" required onChange={(e) => setPhotographer(e.target.value)}
                                     className={styles["select-input"]}>
-                                <option value="">Select a photographer</option>
+                                <option
+                                    value="">{photographersInArea.length > 0 ? "Select a photographer" : "Pin more photos to see photographers"}</option>
                                 {photographersInArea.map((photographer, index) => (
                                     <option key={index} value={photographer.name}>
                                         {photographer.name}
@@ -196,9 +198,9 @@ function Contact() {
                                 <p>Your submission:</p>
                                 <p>Name: {formData.name}</p>
                                 <p>Email: {formData.email}</p>
-                            <p>Message: {formData.message}</p>
-                            <p>Photo: {formData.photoUpload}</p>
-                            <p>Work area: {selectedArea}</p>
+                                <p>Message: {formData.message}</p>
+                                <p>Photo: {formData.photoUpload}</p>
+                                <p>Work area: {selectedArea}</p>
                             <p>Photographer: {photographer}</p>
                             <button className={styles["modalButton"]} onClick={closeModal}>X</button>
                         </div>

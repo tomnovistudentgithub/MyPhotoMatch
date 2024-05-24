@@ -37,7 +37,7 @@ function MyPins () {
                     </div>
 
                     <div className={styles['mypins-tag-container']}>
-                        <h1 className={styles['my-pins-h1-tagcounts']}>Tag counts</h1>
+                        <h1 className={styles['my-pins-h1-tagcounts']}>Style of Chosen Photos</h1>
                         <MostChosenTags tagCounts={tagCounts}/>
                     </div>
                 </>
