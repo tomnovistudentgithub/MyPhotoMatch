@@ -14,9 +14,7 @@
     padding:20px;
 }
 
-.form-wrapper p {
-    max-width: 600px;
-}
+
 
 .form {
     display: flex;
@@ -147,6 +145,14 @@ textarea {
 
 .modalButton button::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.isLoggedInCheck {
+    text-align: center;
+    background-color: rgba(243, 125, 66, 0.7);
+    font-weight: bold;
+    border-radius: 10px;
+
 }
 
 

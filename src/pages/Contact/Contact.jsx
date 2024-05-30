@@ -119,6 +119,7 @@ function Contact() {
     return (
             <div className={styles["parent-form-wrapper"]}>
                 <div className={styles["form-wrapper"]}>
+                    {!isLoggedIn && <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
                     <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
                         <h1>Contact</h1>
                         <p>Want to get in touch with a photographer of your choice? You are at the right place!
@@ -169,7 +170,7 @@ function Contact() {
                             <select id="photographer" required onChange={(e) => setPhotographer(e.target.value)}
                                     className={styles["select-input"]}>
                                 <option
-                                    value="">{photographersInArea.length > 0 ? "Select a photographer" : "Pin more photos to see photographers"}</option>
+                                    value="">{workAreas.length > 0 ? "Select a photographer" : "Pin more photos to see photographers"}</option>
                                 {photographersInArea.map((photographer, index) => (
                                     <option key={index} value={photographer.name}>
                                         {photographer.name}
@@ -187,7 +188,7 @@ function Contact() {
                         </div>
                         <button type="submit" disabled={!isLoggedIn || tagCounts < minimimPins}>Submit</button>
                     </form>
-                    {!isLoggedIn && <p>You must be logged in to contact a photographer.</p>}
+
 
                     {formError && <p>{formError}</p>}
 

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "react-scripts start",
     "debug": "node --inspect-brk node_modules/vite/bin/vite.js"
   },
   "dependencies": {

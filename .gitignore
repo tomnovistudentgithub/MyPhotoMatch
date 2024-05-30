@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.dockerignore
+Dockerfile
 
 # .gitignore readme files
 readme_details.md
