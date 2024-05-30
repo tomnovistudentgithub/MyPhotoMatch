@@ -66,6 +66,7 @@ h2 {
     border-width: 10px;
     border-radius: 5px;
     max-width: 90%;
+    object-fit: cover;
 }
 
 .topic-description-homepage {
