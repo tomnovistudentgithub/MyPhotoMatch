@@ -1,7 +1,6 @@
 .parent-form-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 92vh;
     background-color: rgba(252, 252, 252, 0.88);
 }
