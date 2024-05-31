@@ -1,6 +1,7 @@
 .parent-form-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 92vh;
     background-color: rgba(252, 252, 252, 0.88);
 }
@@ -8,9 +9,10 @@
 .form-wrapper {
     background: rgba(239, 238, 238, 1);
     border-radius: 10px;
-    width: 60%;
-    flex-basis: auto;
+    min-width: 400px;
+    flex-basis: 1000px;
     padding:20px;
+
 }
 
 
@@ -158,15 +160,20 @@ textarea {
 @media (max-width: 768px) {
     .parent-form-wrapper {
         height: auto;
-        padding: 20px;
+
     }
 
     .form-wrapper {
         width: 100%;
+        min-width: 400px;
     }
 
     .form {
-        padding: 10px;
+        padding: 5px;
+        margin: 5px;
+        gap:10px;
+
+
     }
 
     .input-label {
