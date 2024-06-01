@@ -7,6 +7,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-bg-color: #213547;
+  --image-fit: cover;
+  --main-text-color: sandybrown;
 }
 
 #root{ width: 100%;}
@@ -24,7 +27,7 @@ a {
 
 
 html {
-  background-color: #213547;
+  background-color: var(--primary-bg-color);
   min-height: 100%;
 }
 
@@ -37,6 +40,10 @@ body {
   width: 100%;
   padding: 0;
   margin: auto;
+}
+
+img {
+  object-fit: var(--image-fit);
 }
 
 @media screen and (max-width: 600px) {
