@@ -62,9 +62,9 @@ function About() {
                     </article>
 
                 </div>
-                <caption>
-                    <a href="https://www.freepik.com/free-photo/woman-with-camera-taking-picture-reflection_28006248.htm">Image
-                        by HelloDavidPradoPerucha on Freepik</a></caption>
+                <figure>
+                    <figcaption> Image by HelloDavidPradoPerucha on <a href="https://www.freepik.com/free-photo/woman-with-camera-taking-picture-reflection_28006248.htm">Freepik</a></figcaption>
+                </figure>
             </section>
 
         </main>
