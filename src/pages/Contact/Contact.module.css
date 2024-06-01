@@ -166,6 +166,7 @@ textarea {
     .form-wrapper {
         width: 100%;
         min-width: 400px;
+        margin-top: 20px;
     }
 
     .form {
