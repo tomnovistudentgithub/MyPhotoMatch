@@ -69,17 +69,17 @@ function TopicPhotos() {
     }
 
     return (
-        <div className={styles['topic-photos-wrapper']} style={{backgroundImage: `url(${coverPhotoUrl})`}}>
+        <main className={styles['topic-photos-wrapper']} style={{backgroundImage: `url(${coverPhotoUrl})`}}>
             <div className={styles['overlay']}>
-                <div className={styles['topic-content']}>
-                    <div className={styles['topic-text']}>
+                <section className={styles['topic-content']}>
+                    <article className={styles['topic-text']}>
                         <h1>{topic.title}</h1>
                         <p>{topic.description}</p>
-                    </div>
+                    </article>
                     {error ? (
                         <div className={styles['error']}>{error}</div>
                     ) : (
-                        <div className={styles['photo-grid']}>
+                        <section className={styles['photo-grid']}>
                             {showPhotos && photos.map((photo, index) => {
                                 const gridRow = Math.floor(index / 3) + 1;
                                 const gridColumn = index % 3 + 1;
@@ -93,12 +93,12 @@ function TopicPhotos() {
                                     </div>
                                 );
                             })}
-                        </div>
+                        </section>
                     )}
-                </div>
+                </section>
                 <ScrollIndicator/>
             </div>
-        </div>
+        </main>
     );
 }
 
