@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.69);
+    font-size: small;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-text-color);
+    height: 45px;
+
+}
+
+

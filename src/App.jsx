@@ -13,6 +13,7 @@ import AdminRoute from "./Components/AdminRoute.jsx";
 import NavBar from "./Components/navigation/NavBar.jsx";
 import AuthContextProvider from "./contexts/AuthContext.jsx";
 import PinnedPhotosProvider from "./contexts/PinnedPhotosProvider.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                         <Route path="*" element={<NotFound />} />
                     </Routes>
             </PinnedPhotosProvider>
+                <Footer />
             </Router>
         </AuthContextProvider>
     );

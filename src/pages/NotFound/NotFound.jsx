@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserSecret, faSearch } from '@fortawesome/free-solid-svg-icons';
 function NotFound() {
     return <>
-        <div className={styles['outer-wrapper']}>
+        <main className={styles['outer-wrapper']}>
             <div className={styles['content-wrapper']}>
                 <div className={styles['icons-wrapper']}>
                     <FontAwesomeIcon className="detective-icon" icon={faUserSecret}/>
@@ -15,7 +15,7 @@ function NotFound() {
                     className="my-link" to="/">home.</Link>
                 </h1>
             </div>
-        </div>
+        </main>
     </>
 }
 export default NotFound;

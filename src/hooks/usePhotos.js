@@ -13,6 +13,7 @@ export const usePhotos = () => {
                 const photoData = await getPhotos(page);
                 setPhotos(photoData);
                 setIsLoading(false);
+                console.log("page " + page);
             } catch (error) {
                 if (error.response) {
                     setError(error.response.data);

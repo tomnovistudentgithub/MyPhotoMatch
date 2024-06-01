@@ -1,3 +1,5 @@
+
+
 .header-container{
     display: flex;
     flex-direction: column;
@@ -76,6 +78,7 @@ h2 {
 .disclaimer-homepage {
     background-color: rgba(250, 211, 26, 0.42);
     color: white;
+    max-width: 800px;
 }
 
 .outer-section-photos-homepage {
@@ -101,11 +104,6 @@ h2 {
     margin-left: 30px;
 }
 
-.disclaimer-homepage {
-    background-color: rgba(250, 211, 26, 0.42);
-    color: white;
-    max-width: 800px;
-}
 
 .error-message {
     font-size: 1.2em;
@@ -154,3 +152,4 @@ h2 {
 
 
 }
+
