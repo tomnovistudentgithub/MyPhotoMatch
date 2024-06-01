@@ -11,7 +11,7 @@
     padding: 10px;
     font-size: 1em;
     grid-auto-rows: 250px;
-    color:sandybrown;
+    color: var(--main-text-color);
 }
 
 .my-pins-h1-pinned {
@@ -109,7 +109,7 @@
 .mypins-tag-container {
     display: flex;
     flex-direction: column;
-    color: sandybrown;
+    color: var(--main-text-color);
     font-size: 1.5em;
     text-align: center;
     margin-top: 40px;

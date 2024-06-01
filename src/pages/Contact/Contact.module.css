@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 92vh;
+    height: 90vh;
     background-color: rgba(252, 252, 252, 0.88);
 }
 
@@ -12,10 +12,8 @@
     min-width: 400px;
     flex-basis: 1000px;
     padding:20px;
-
+    margin: 5px
 }
-
-
 
 .form {
     display: flex;
@@ -153,7 +151,6 @@ textarea {
     background-color: rgba(243, 125, 66, 0.7);
     font-weight: bold;
     border-radius: 10px;
-
 }
 
 

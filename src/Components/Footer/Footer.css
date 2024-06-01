@@ -1,6 +1,5 @@
 footer {
     display: flex;
-
     background-color: rgba(0, 0, 0, 0.69);
     font-size: small;
     justify-content: center;
@@ -9,3 +8,5 @@ footer {
     height: 45px;
 
 }
+
+
