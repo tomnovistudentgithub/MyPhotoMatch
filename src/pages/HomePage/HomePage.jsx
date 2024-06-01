@@ -25,7 +25,7 @@ function HomePage() {
     const displayTopics = displayOrientation === 'portrait' ? topics.portraitTopics.slice(0, 4) : topics.landscapeTopics.slice(0, 4);
 
     return (
-        <>
+
         <main>
             <header className={styles['header-container']}>
                 <h2>Photo topics</h2>
@@ -71,12 +71,8 @@ function HomePage() {
                 ))}
             </section>
 
-
+            <ScrollIndicator/>
         </main>
-    <footer>
-        <ScrollIndicator/>
-    </footer>
-        </>
 );
 }
 
