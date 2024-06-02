@@ -1,4 +1,3 @@
-import responseOk from "../apiHelpers/responseOk.js";
 import handleError from "../apiHelpers/handleError.js";
 import getUserFromTokenAndPassToken from "../../helpers/getUserFromTokenAndPassToken.js";
 import checkTokenValidity from "../../helpers/checkTokenValidity.js";
@@ -33,16 +32,7 @@ async function apiHandler(axiosInstance, method, endpoint, data = null, response
 
     try {
         const response = await axiosInstance({ method, url, headers: mergedHeaders, data, responseType });
-
-        if (responseOk(response.status)){
-            if (responseType === 'blob') {
-                return response;
-            }
-            return { data: response.data, error: null };
-
-        } else {
-            throw new Error('Server responded with a non-2xx status code');
-        }
+        return responseType === 'blob' ? response : { data: response.data, error: null };
 
     } catch (error) {
         let errorMessage = handleError(error);
