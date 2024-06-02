@@ -3,17 +3,18 @@ import unsplashedEndpoint from './unsplashedEndpoint.js';
 import apiHandler from "../apiHelpers/apiHandler.js";
 
 export const getPhotos = async (page = 1) => {
+
+    console.log(page);
     const response = await apiHandler(
         unsplashedEndpoint,
         'get',
         '/photos',
         null,
         'json',
-        {
-            params: {
-                page
-            }
-        }
+
+            {},
+            { page }
+
     );
     if (response.error) {
         throw new Error(response.error);

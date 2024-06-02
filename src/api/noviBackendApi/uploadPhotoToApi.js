@@ -18,8 +18,8 @@ async function uploadPhotoToApi(username, formData) {
             'Accept': '*/*'
         }
     );
-    if (response.error) {
-        throw new Error(response.error);
+    if (response instanceof Error) {
+        throw response;
     }
 
     return response;

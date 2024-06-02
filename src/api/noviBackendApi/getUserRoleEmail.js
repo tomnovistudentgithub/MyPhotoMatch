@@ -12,15 +12,20 @@ async function getUserRoleEmail() {
                 '/users/{username}'
             );
 
-            if (userInfo) {
-                return {
-                    username: userInfo.username,
-                    userRole: userInfo.authorities[0].authority,
-                    email: userInfo.email
-                };
-            } else {
-                throw new Error('Error getting user info');
+            if (error) {
+                throw new Error(error);
             }
+
+            if (!userInfo) {
+                throw new Error('User info is null');
+            }
+
+            return {
+                username: userInfo.username,
+                userRole: userInfo.authorities[0].authority,
+                email: userInfo.email
+            };
+
         } catch (error) {
             return null;
         }

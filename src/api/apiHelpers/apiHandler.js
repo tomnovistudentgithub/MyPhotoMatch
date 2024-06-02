@@ -2,7 +2,7 @@ import handleError from "../apiHelpers/handleError.js";
 import getUserFromTokenAndPassToken from "../../helpers/getUserFromTokenAndPassToken.js";
 import checkTokenValidity from "../../helpers/checkTokenValidity.js";
 
-async function apiHandler(axiosInstance, method, endpoint, data = null, responseType = 'json', headers = {} ) { // token
+async function apiHandler(axiosInstance, method, endpoint, data = null, responseType = 'json', headers = {}, params = {} ) { // token
     let url = endpoint;
     let token = null;
     let username = null;
@@ -29,9 +29,8 @@ async function apiHandler(axiosInstance, method, endpoint, data = null, response
     const defaultHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const mergedHeaders = {...defaultHeaders, ...headers};
 
-
     try {
-        const response = await axiosInstance({ method, url, headers: mergedHeaders, data, responseType });
+        const response = await axiosInstance({ method, url, headers: mergedHeaders, data, responseType, params });
         return responseType === 'blob' ? response : { data: response.data, error: null };
 
     } catch (error) {

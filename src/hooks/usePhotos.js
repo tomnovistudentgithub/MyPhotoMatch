@@ -14,12 +14,12 @@ export const usePhotos = () => {
                 setPhotos(photoData);
                 setIsLoading(false);
                 console.log("page " + page);
+                console.log(photoData);
             } catch (error) {
                 if (error.response) {
                     setError(error.response.data);
                 } else {
                     setError(error.message);
-
                 }
                 setIsLoading(false);
             }

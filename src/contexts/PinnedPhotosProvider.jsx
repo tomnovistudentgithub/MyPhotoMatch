@@ -21,10 +21,14 @@ const PinnedPhotosProvider = ({ children }) => {
 
     const fetchPinnedPhotos = async () => {
         let userInfo = await getUserInfoField();
-        if (typeof userInfo === 'string') {
-            userInfo = [userInfo];
+        if (userInfo instanceof Error) {
+            setError(userInfo.message);
+        } else {
+            if (typeof userInfo === 'string') {
+                userInfo = [userInfo];
+            }
+            setPinnedPhotosIds(userInfo || []);
         }
-        setPinnedPhotosIds(userInfo || []);
         setLoading(false);
     };
 
