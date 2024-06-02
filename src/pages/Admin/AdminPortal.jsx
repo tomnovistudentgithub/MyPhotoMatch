@@ -9,7 +9,6 @@ function AdminPortal() {
     const [username, setUsername] = useState('');
     const [setPhotoUrl] = useState(null);
     const [error, setError] = useState(null);
-    const { isAdmin, loading } = useContext(AuthContext);
 
     const handleUsernameChange = (event) => {
         try {
@@ -36,14 +35,6 @@ function AdminPortal() {
 
         }
     };
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (!isAdmin) {
-        return <h1>You do not have permission to view this page</h1>;
-    }
 
 
     return (

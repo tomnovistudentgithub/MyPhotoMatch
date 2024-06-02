@@ -116,6 +116,7 @@ function AuthContextProvider({ children }) {
     function logout() {
         setAuthState({user: null, setAuthState: 'done', userRole: null});
         localStorage.removeItem('token');
+        localStorage.removeItem('tagCounts')
         setIsLoggedIn(false);
         setIsAdmin(false);
 
