@@ -49,10 +49,6 @@ function AuthContextProvider({ children }) {
         setLoading(false);
     }, []);
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
     const data = {
         ...authState,
         isLoggedIn: isLoggedIn,
