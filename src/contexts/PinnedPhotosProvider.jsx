@@ -20,12 +20,20 @@ const PinnedPhotosProvider = ({ children }) => {
     const isTopicPage = location.pathname.includes('topic') || location.pathname.includes('mypins');
 
     const fetchPinnedPhotos = async () => {
-        let userInfo = await getUserInfoField();
-        if (typeof userInfo === 'string') {
-            userInfo = [userInfo];
+
+        try {
+            let userInfo = await getUserInfoField();
+            if (typeof userInfo === 'string') {
+                userInfo = [userInfo];
+                setPinnedPhotosIds(userInfo || []);
+                setLoading(false);
+            }
+        }   catch (error) {
+            setError(error.response.data);
+            setLoading(false);
         }
-        setPinnedPhotosIds(userInfo || []);
-        setLoading(false);
+
+
     };
 
     useEffect(() => {

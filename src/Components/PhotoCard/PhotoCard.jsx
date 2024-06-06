@@ -5,8 +5,7 @@ import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 
 function PhotoCard({ photo }) {
 
-    const {error} = useContext(PinnedPhotosContext);
-    const { isTopicPage } = useContext(PinnedPhotosContext);
+    const {error, isTopicPage} = useContext(PinnedPhotosContext);
 
 
     return (

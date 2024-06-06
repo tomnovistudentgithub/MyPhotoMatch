@@ -1,4 +1,4 @@
-import AdminPortal from "../pages/Admin/AdminPortal.jsx";
+import AdminPortal from "./Admin/AdminPortal.jsx";
 import {useContext, useEffect} from "react";
 import {AuthContext} from "../contexts/AuthContext.jsx";
 import {useNavigate} from "react-router-dom";

@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styles from './Login.module.css';
-import {AuthContext} from "../../../contexts/AuthContext.jsx";
-import {loginFields} from "../formFieldsAuth.js";
+import {AuthContext} from "../../contexts/AuthContext.jsx";
+import {loginFields} from "../../Components/Auth/formFieldsAuth.js";
 function Login() {
     const { login } = useContext(AuthContext);
     const [loginError, setLoginError]  = useState('');

@@ -10,14 +10,13 @@ async function getUserInfoField() {
                    '/users/{username}/info'
                );
 
-               if (userInfo) {
-                   return userInfo;
-               } else {
-                   throw new Error('Error getting user info');
+               if (error) {
+                   throw new Error(`Error in getUserInfoField: ${error}`);
                }
-        } catch (error) {
-            return null;
-        }
-    }
+               return userInfo;
+           } catch (error) {
+               throw new Error(`Error in getUserInfoField: ${error.message}`);
+           }
+}
 
 export default getUserInfoField;

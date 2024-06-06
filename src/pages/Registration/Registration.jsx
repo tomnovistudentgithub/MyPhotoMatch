@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import backendEndpoint from "../../../api/noviBackendApi/backendEndpoint.js";
+import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
 import {useNavigate} from "react-router-dom";
-import {AuthContext} from "../../../contexts/AuthContext.jsx";
+import {AuthContext} from "../../contexts/AuthContext.jsx";
 import styles from './Registration.module.css';
-import {registrationFields} from "../formFieldsAuth.js";
+import {registrationFields} from "../../Components/Auth/formFieldsAuth.js";
 
 function Registration() {
     const { login, isLoggedIn } = useContext(AuthContext);
