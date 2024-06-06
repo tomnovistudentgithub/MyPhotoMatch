@@ -3,6 +3,7 @@ import getUserFromTokenAndPassToken from "../helpers/getUserFromTokenAndPassToke
 import getUserRoleEmail from "../api/noviBackendApi/getUserRoleEmail.js";
 import axios from "axios";
 import {jwtDecode} from 'jwt-decode';
+import checkTokenValidity from "../helpers/checkTokenValidity.js";
 
 export const AuthContext = createContext();
 
@@ -18,6 +19,17 @@ function AuthContextProvider({ children }) {
         const token = localStorage.getItem('token');
 
         if (token) {
+
+            const isValidToken = checkTokenValidity(token);
+            if (!isValidToken) {
+                localStorage.removeItem('token');
+                setAuthState({
+                    user: null,
+                    status: 'done',
+                });
+                setIsLoggedIn(false);
+                return;
+            }
 
             const fetchUser = async () => {
 
@@ -74,6 +86,13 @@ function AuthContextProvider({ children }) {
 
             if (response.status === 200) {
                 const data = response.data;
+                const token = response.data.jwt;
+                const isValidToken = checkTokenValidity(token);
+
+                if(!isValidToken) {
+                    throw new Error('Token is not valid');
+                }
+
                 localStorage.setItem('token', data.jwt);
                 const decodedToken = jwtDecode(data.jwt);
                 setIsLoggedIn(true);
@@ -93,6 +112,7 @@ function AuthContextProvider({ children }) {
     function logout() {
         setAuthState({user: null, setAuthState: 'done', userRole: null});
         localStorage.removeItem('token');
+        localStorage.removeItem('tagCounts')
         setIsLoggedIn(false);
         setIsAdmin(false);
 

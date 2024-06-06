@@ -122,7 +122,7 @@
     transform: translateY(-50%);
     background: transparent;
     opacity: 1;
-    color: sandybrown;
+    color: var(--main-text-color);
 }
 
 .error-message {

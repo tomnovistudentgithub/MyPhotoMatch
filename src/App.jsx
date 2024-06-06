@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import './App.css'
-import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import HomePage from './pages/HomePage/HomePage.jsx';
 import TopicPhotos from "./pages/TopicPhotos/TopicPhotos.jsx";
@@ -13,8 +12,11 @@ import AdminRoute from "./Components/AdminRoute.jsx";
 import NavBar from "./Components/navigation/NavBar.jsx";
 import AuthContextProvider from "./contexts/AuthContext.jsx";
 import PinnedPhotosProvider from "./contexts/PinnedPhotosProvider.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
 function App() {
+
+
 
     return (
         <AuthContextProvider>
@@ -33,6 +35,7 @@ function App() {
                         <Route path="*" element={<NotFound />} />
                     </Routes>
             </PinnedPhotosProvider>
+                <Footer />
             </Router>
         </AuthContextProvider>
     );
