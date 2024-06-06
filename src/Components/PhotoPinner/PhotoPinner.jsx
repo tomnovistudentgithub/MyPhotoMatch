@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PinnedPhotosContext from '../../contexts/PinnedPhotoContext';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -14,17 +14,17 @@ function PhotoPinner({ photo, isTopicPage }) {
     const pinButtonContainerClass = isTopicPage ? styles['pinButtonContainerTopic'] : styles['pinButtonContainer'];
 
 
-    const handlePinPhoto = () => {
+    const handlePinPhoto = useCallback(() => {
         if (!isLoggedIn) {
             navigate('/login');
         } else {
             togglePinPhoto(photo);
         }
-    }
+    }, [isLoggedIn, navigate, photo, togglePinPhoto]);
 
-    const handleUnpinPhoto = () => {
+    const handleUnpinPhoto = useCallback(() => {
         togglePinPhoto(photo);
-    }
+    }, [photo, togglePinPhoto]);
 
     useEffect(() => {
         const isPinnedInDB = pinnedPhotos.some(pinnedPhoto => pinnedPhoto.id === photo.id);

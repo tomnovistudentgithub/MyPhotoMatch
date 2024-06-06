@@ -112,8 +112,7 @@ const PinnedPhotosProvider = ({ children }) => {
             setPinnedPhotosIds(updatedPinnedPhotos);
             setError(null);
         } catch (error) {
-
-            setError('Failed to pin/unpin photo. Please try again later.');
+            setError('Failed to pin/unpin photo. Please try again later.' + error.response.data);
         }
     }
 
