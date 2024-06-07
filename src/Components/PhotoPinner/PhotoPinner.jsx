@@ -24,6 +24,7 @@ function PhotoPinner({ photo, isTopicPage }) {
 
     const handleUnpinPhoto = useCallback(() => {
         togglePinPhoto(photo);
+        console.log('unpinning photo');
     }, [photo, togglePinPhoto]);
 
     useEffect(() => {
