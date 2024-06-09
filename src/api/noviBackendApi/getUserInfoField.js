@@ -11,8 +11,13 @@ async function getUserInfoField() {
                );
 
                if (error) {
-                   throw new Error(`Error in getUserInfoField: ${error}`);
+                   throw new Error(error);
                }
+
+               if (!userInfo) {
+                   throw new Error('User info is null');
+               }
+
                return userInfo;
            } catch (error) {
                throw new Error(`Error in getUserInfoField: ${error.message}`);
