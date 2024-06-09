@@ -9,11 +9,10 @@ export const getPhotos = async (page = 1) => {
         '/photos',
         null,
         'json',
-        {
-            params: {
-                page
-            }
-        }
+
+            {},
+            { page }
+
     );
     if (response.error) {
         throw new Error(response.error);
