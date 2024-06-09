@@ -10,6 +10,8 @@ async function getUserInfoField() {
                    '/users/{username}/info'
                );
 
+               console.log('userInfo:', userInfo);
+
                if (error) {
                    throw new Error(error);
                }

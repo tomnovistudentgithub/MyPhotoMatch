@@ -33,3 +33,10 @@ input[type="password"] {
 
 }
 
+.maincontent {
+  flex-grow: 1;
+}
+footer {
+  flex-shrink: 0;
+}
+

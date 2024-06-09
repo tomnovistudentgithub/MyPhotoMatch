@@ -120,6 +120,7 @@ function Contact() {
             <div className={styles["parent-form-wrapper"]}>
                 <div className={styles["form-wrapper"]}>
                     {!isLoggedIn && <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
+                    {isLoggedIn && workAreas.length === 0 && <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to contact a matching photographer, please pin more photos. Generally between 10-15 photos should be sufficient.</p>}
                     <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
                         <h1>Contact</h1>
                         <p>Want to get in touch with a photographer of your choice? You are at the right place!
