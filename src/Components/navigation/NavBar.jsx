@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faInfoCircle, faEnvelope, faThumbtack, faUserShield, faSignInAlt, faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import myPhotoMatch from '../../assets/MyPhotoMatch.png';
 import NavItem from "./NavItem.jsx";
+import Button from "../Button/Button.jsx";
 
 function NavBar() {
     let location = useLocation();
@@ -78,17 +79,19 @@ function NavBar() {
                     )}
                     <div className={styles['login-button']}>
                         {isLoggedIn ? (
-                            <button className={styles['login-logout-button']} onClick={handleLogoutClick}>
+                            <Button onClick={handleLogoutClick}>
                                 <FontAwesomeIcon
                                     className={styles['login-icon']}
                                     icon={faSignOutAlt}/><span
-                                className={styles['login-text']}> Logout</span></button>
+                                className={styles['login-text']}> Logout</span>
+                            </Button>
                         ) : (
-                            <button className={styles['login-logout-button']} onClick={handleLoginClick}>
+                            <Button onClick={handleLoginClick}>
                                 <FontAwesomeIcon
                                     className={styles['login-icon']}
                                     icon={faSignInAlt}/><span
-                                className={styles['login-text']}> Login</span></button>
+                                className={styles['login-text']}> Login</span>
+                            </Button>
                         )}
                     </div>
                 </nav>

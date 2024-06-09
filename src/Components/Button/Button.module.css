@@ -1,0 +1,14 @@
+.login-logout-button {
+    text-align: center;
+    list-style: none;
+    font-size: 0.95rem;
+    color: sandybrown;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    align-content: center;
+    margin-left: auto;
+    background-color: transparent;
+
+}

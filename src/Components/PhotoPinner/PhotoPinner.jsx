@@ -23,6 +23,7 @@ function PhotoPinner({ photo, isTopicPage }) {
     }, [isLoggedIn, navigate, photo, togglePinPhoto]);
 
     const handleUnpinPhoto = useCallback(() => {
+        console.log('handleUnpinPhoto called with photo:', photo);
         togglePinPhoto(photo);
 
     }, [photo, togglePinPhoto]);

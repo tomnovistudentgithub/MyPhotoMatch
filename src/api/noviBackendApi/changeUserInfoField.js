@@ -9,5 +9,6 @@ async function changeUserInfoField(ids) {
         '/users/{username}',
         {info: JSON.stringify(ids)},
     )
+
 }
 export default changeUserInfoField;

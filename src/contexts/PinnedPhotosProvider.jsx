@@ -20,20 +20,16 @@ const PinnedPhotosProvider = ({ children }) => {
     const isTopicPage = location.pathname.includes('topic') || location.pathname.includes('mypins');
 
     const fetchPinnedPhotos = async () => {
-
-        try {
-            let userInfo = await getUserInfoField();
+        let userInfo = await getUserInfoField();
+        if (userInfo instanceof Error) {
+            setError(userInfo.message);
+        } else {
             if (typeof userInfo === 'string') {
                 userInfo = [userInfo];
-                setPinnedPhotosIds(userInfo || []);
-                setLoading(false);
             }
-        }   catch (error) {
-            setError(error.response.data);
-            setLoading(false);
+            setPinnedPhotosIds(userInfo || []);
         }
-
-
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -74,6 +70,7 @@ const PinnedPhotosProvider = ({ children }) => {
                 };
             });
             setPinnedPhotos(photosWithDetails);
+                console.log('photosWithDetails:', photosWithDetails);
             } catch (error) {
                 setError(error.response.data);
             } finally {
@@ -107,9 +104,12 @@ const PinnedPhotosProvider = ({ children }) => {
             updatedPinnedPhotos = [...pinnedPhotosIds, photo.id];
         }
 
+        console.log('updatedPinnedPhotos before state update:', updatedPinnedPhotos);
+
         try {
             await changeUserInfoField(updatedPinnedPhotos);
             setPinnedPhotosIds(updatedPinnedPhotos);
+            console.log('updatedPinnedPhotos after state update:', updatedPinnedPhotos);
             setError(null);
         } catch (error) {
             setError('Failed to pin/unpin photo. Please try again later.' + error.response.data);

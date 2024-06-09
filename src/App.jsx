@@ -21,21 +21,21 @@ function App() {
     return (
         <AuthContextProvider>
             <Router>
-            <PinnedPhotosProvider>
-                    <NavBar />
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/topic/:topicId" element={<TopicPhotos />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/mypins" element={<MyPins />} />
-                        <Route path="/registration" element={<Registration />} />
-                        <Route path="/admin" element={<AdminRoute />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-            </PinnedPhotosProvider>
-                <Footer />
+                <PinnedPhotosProvider>
+                    <NavBar/>
+                        <Routes>
+                            <Route path="/" element={<HomePage/>}/>
+                            <Route path="/contact" element={<Contact/>}/>
+                            <Route path="/about" element={<About/>}/>
+                            <Route path="/topic/:topicId" element={<TopicPhotos/>}/>
+                            <Route path="/login" element={<Login/>}/>
+                            <Route path="/mypins" element={<MyPins/>}/>
+                            <Route path="/registration" element={<Registration/>}/>
+                            <Route path="/admin" element={<AdminRoute/>}/>
+                            <Route path="*" element={<NotFound/>}/>
+                        </Routes>
+                </PinnedPhotosProvider>
+                <Footer/>
             </Router>
         </AuthContextProvider>
     );

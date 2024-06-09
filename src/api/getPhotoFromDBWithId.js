@@ -5,6 +5,7 @@ export default async function getPhotoFromDBWithId(id) {
 
     try {
         const response = await unsplashedEndpoint.get(`/photos/${id}`);
+        console.log('response:', response.data);
         return response.data;
     } catch (error) {
         console.error(error);

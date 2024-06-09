@@ -3,6 +3,7 @@ import unsplashedEndpoint from './unsplashedEndpoint.js';
 import apiHandler from "../apiHelpers/apiHandler.js";
 
 export const getPhotos = async (page = 1) => {
+    console.log('Fetching page:', page);
     const response = await apiHandler(
         unsplashedEndpoint,
         'get',
@@ -14,6 +15,7 @@ export const getPhotos = async (page = 1) => {
             { page }
 
     );
+    console.log('Response:', response);
     if (response.error) {
         throw new Error(response.error);
     }
