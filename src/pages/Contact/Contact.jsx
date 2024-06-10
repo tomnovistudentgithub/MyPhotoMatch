@@ -187,7 +187,7 @@ function Contact() {
                             {errorPhotoUpload && <p>{errorPhotoUpload}</p>}
                             {errors.photoUpload && <p>This field is required</p>}
                         </div>
-                        <button type="submit" disabled={!isLoggedIn || tagCounts < minimimPins}>Submit</button>
+                        <button type="submit" disabled={!isLoggedIn || workAreas.length === 0}>Submit</button>
                     </form>
 
 
