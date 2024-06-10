@@ -4,6 +4,7 @@ import {usePhotos} from "../../hooks/usePhotos.js";
 import {useTopics} from "../../hooks/useTopics.js";
 import PhotoCard from "../../Components/PhotoCard/PhotoCard.jsx";
 import ScrollIndicator from "../../Components/ScrollIndicator/ScrollIndicator.jsx";
+import Button from "../../Components/Button/Button.jsx";
 
 function HomePage() {
     const { photos, isLoading: photosLoading, setPage, error } = usePhotos();
@@ -53,9 +54,8 @@ function HomePage() {
             <div className={styles['header-container']}>
                 <h2>Photos</h2>
                 <div className={styles['homepage-buttons-container']}>
-                    <button className={styles['page-buttons-homepage']} onClick={handlePrev}>Previous photos
-                    </button>
-                    <button className={styles['page-buttons-homepage']} onClick={handleNext}>Next photos</button>
+                    <Button onClick={handlePrev}>Previous photos </Button>
+                    <Button onClick={handleNext}>Next photos</Button>
                 </div>
                 {error && <div className={styles['error-message']}>{error}</div>}
                 <p className={styles['disclaimer-homepage']}> *Please note that I use a developers license of the

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack, faBan } from '@fortawesome/free-solid-svg-icons';
 import styles from './PhotoPinner.module.css';
+import Button from "../Button/Button.jsx";
 
 function PhotoPinner({ photo, isTopicPage }) {
     const { pinnedPhotos, togglePinPhoto } = useContext(PinnedPhotosContext);
@@ -37,9 +38,9 @@ function PhotoPinner({ photo, isTopicPage }) {
     return (
         <div className={pinButtonContainerClass}>
             {isPhotoPinned ? (
-                <button onClick={handleUnpinPhoto}><FontAwesomeIcon icon={faBan}/> Unpin</button>
+                <Button onClick={handleUnpinPhoto}><FontAwesomeIcon icon={faBan}/> Unpin</Button>
             ) : (
-                <button onClick={handlePinPhoto}><FontAwesomeIcon icon={faThumbtack}/> Pin</button>
+                <Button onClick={handlePinPhoto}><FontAwesomeIcon icon={faThumbtack}/> Pin</Button>
             )}
         </div>
     );
