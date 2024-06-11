@@ -4,6 +4,7 @@ import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
 import getUserRole from "../../helpers/getUserRole.js";
 import PropTypes from 'prop-types';
 import styles from './UserInfoButton.module.css';
+import Button from "../Button/Button.jsx";
 
 
 function UserInfoButton({ username }) {
@@ -44,7 +45,7 @@ function UserInfoButton({ username }) {
 
     return (
         <div className={styles['get-user-info']}>
-            <button onClick={handleClick}>Get User Info</button>
+            <Button onClick={handleClick}>Get User Info</Button>
             {userInfo && <div className={styles['get-user-info-content']}>User Info: {JSON.stringify(userInfo)}</div>}
             {error && <div>{error}</div>}
         </div>

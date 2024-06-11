@@ -85,7 +85,11 @@ textarea {
 .svg-inline {
     width: 20px; height: 20px;
 }
-
+.submit-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
 
 .modal {
     position: fixed;

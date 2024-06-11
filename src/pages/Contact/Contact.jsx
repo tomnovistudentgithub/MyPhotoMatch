@@ -11,6 +11,7 @@ import PinnedPhotosContext from "../../contexts/PinnedPhotoContext.js";
 import matchPhotographersToUserTags from "../../helpers/matchPhotographersToUserTags.js";
 import preparePhotoForUpload from "../../helpers/preparePhotoForUpload.js";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
+import InputField from "../../Components/InputField/InputField.jsx";
 
 
 
@@ -28,7 +29,7 @@ function Contact() {
     const [photographersInArea, setPhotographersInArea] = useState([]);
     const [formError, setFormError] = useState('');
     const { setResetForm, isLoggedIn } = useContext(AuthContext);
-    const minimimPins = 5;
+
 
     useEffect(() => {
         if (tagCounts) {
@@ -127,11 +128,9 @@ function Contact() {
                             Make sure you have pinned enough photos so we can determine the best match. Once you have
                             enough pins you can select a location first, followed by the photographer.</p>
 
-                        <div className={styles["input-label"]}>
-                            <FontAwesomeIcon icon={faUser}/>
-                            <input {...register("name", {required: true})} placeholder="Name"/>
-                            {errors.name && <p>This field is required</p>}
-                        </div>
+
+                            <InputField type="text" name="name" placeholder="Name" register={register} error={errors.name} icon={faUser} />
+                            <InputField type="text" name="userName" placeholder="Username" register={register} error={errors.userName} icon={faUserCircle} disabled={true} />
                         <div className={styles["input-label"]}>
                             <FontAwesomeIcon icon={faUserCircle}/>
                             <input {...register("userName", {required: false})}
@@ -187,7 +186,7 @@ function Contact() {
                             {errorPhotoUpload && <p>{errorPhotoUpload}</p>}
                             {errors.photoUpload && <p>This field is required</p>}
                         </div>
-                        <button type="submit" disabled={!isLoggedIn || workAreas.length === 0}>Submit</button>
+                        <button type="submit" className={styles["submit-button"]} disabled={!isLoggedIn || workAreas.length === 0}>Submit</button>
                     </form>
 
 
