@@ -121,7 +121,7 @@ function Contact() {
             <div className={styles["parent-form-wrapper"]}>
                 <div className={styles["form-wrapper"]}>
                     {!isLoggedIn && <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
-                    {isLoggedIn && workAreas.length === 0 && <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to contact a matching photographer, please pin more photos. Generally between 10-15 photos should be sufficient.</p>}
+                    {isLoggedIn && workAreas.length === 0 && <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to contact a matching photographer, please pin more photos. Generally pinning between 10-15 photos should be sufficient to get a good grasp of your preference.</p>}
                     <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
                         <h1>Contact</h1>
                         <p>Want to get in touch with a photographer of your choice? You are at the right place!
@@ -131,27 +131,9 @@ function Contact() {
 
                             <InputField type="text" name="name" placeholder="Name" register={register} error={errors.name} icon={faUser} />
                             <InputField type="text" name="userName" placeholder="Username" register={register} error={errors.userName} icon={faUserCircle} disabled={true} />
-                        <div className={styles["input-label"]}>
-                            <FontAwesomeIcon icon={faUserCircle}/>
-                            <input {...register("userName", {required: false})}
-                                   placeholder="Username"
-                                   disabled={!!username}
-                            />
-                        </div>
+                            <InputField type="email" name="email" placeholder="Email" register={register} error={errors.email} icon={faEnvelope} />
+                            <InputField type="text" name="message" placeholder="Message" register={register} error={errors.message} icon={faMessage} />
 
-                        {errors.userName && <p>error</p>}
-                        <div className={styles["input-label"]}>
-                            <FontAwesomeIcon icon={faEnvelope}/>
-                            <input {...register("email", {required: true})} placeholder="Email"/>
-                        </div>
-                        {errors.email && <p>This field is required</p>}
-
-                        <div className={styles["input-label"]}>
-                            <FontAwesomeIcon icon={faMessage}/>
-                            <textarea {...register("message", {required: true})} placeholder="Message"
-                                      className={styles.textarea}/>
-                            {errors.message && <p>This field is required</p>}
-                        </div>
                         <div className={styles["input-label"]}>
                             <FontAwesomeIcon icon={faMapMarkerAlt}/>
                             <select id="workArea" required onChange={(e) => setSelectedArea(e.target.value)}
