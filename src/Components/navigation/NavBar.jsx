@@ -7,6 +7,7 @@ import { faHome, faInfoCircle, faEnvelope, faThumbtack, faUserShield, faSignInAl
 import myPhotoMatch from '../../assets/MyPhotoMatch.png';
 import NavItem from "./NavItem.jsx";
 import Button from "../Button/Button.jsx";
+import HamburgerMenu from "./HamburgerMenu.jsx";
 
 function NavBar() {
     let location = useLocation();
@@ -31,8 +32,12 @@ function NavBar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > navHeight / 2;
-            setScrolled(isScrolled);
+            const offset = window.scrollY;
+            if (offset > 15) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
         };
         document.addEventListener('scroll', handleScroll);
 
@@ -41,20 +46,7 @@ function NavBar() {
         };
     }, [navHeight]);
 
-    const hamburgerRef = useRef(null);
 
-    const handleDocumentClick = (event) => {
-        if (isOpen && event.target.tagName !== 'A' && hamburgerRef.current !== event.target)  {
-            setIsOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleDocumentClick);
-        return () => {
-            document.removeEventListener('mousedown', handleDocumentClick);
-        };
-    }, [isOpen]);
 
     return (
         <div className={`${styles['flex-container']} ${isOpen ? styles['overlay'] : ''}`} ref={navRef}>
@@ -70,13 +62,9 @@ function NavBar() {
                             {isLoggedIn && isAdmin && <NavItem to="/admin" icon={faUserShield} text="Admin" setIsOpen={setIsOpen}/>}
                         </ul>
                     </div>
-                    {scrolled && (
-                        <FontAwesomeIcon
-                            ref={hamburgerRef}
-                            icon={faBars}
-                            className={`${styles['hamburger-icon']} ${isOpen ? styles['active'] : ''}`}
-                            onClick={() => setIsOpen(!isOpen)}  />
-                    )}
+
+                    <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} scrolled={scrolled} />
+
                     <div className={styles['login-button']}>
                         {isLoggedIn ? (
 
