@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import backendEndpoint from "../../api/noviBackendApi/backendEndpoint.js";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
@@ -66,11 +66,8 @@ function Registration() {
         <div className={styles['page-wrapper']}>
             <div className={styles['div-wrapper-form']}>
                 <div className={styles['form-wrapper']}>
-
                     <h1>Registration</h1>
                     <p>Register your account here</p>
-
-
                     <form onSubmit={handleSubmit} className={styles.form}>
                         {errorMessage && <h4 className={styles['error-feedback']}>{errorMessage}</h4>}
                         {showSuccessMessage && <h4>Registration successful! Logging in and redirecting...</h4>}
