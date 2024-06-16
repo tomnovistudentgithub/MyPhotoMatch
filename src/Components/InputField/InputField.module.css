@@ -1,0 +1,11 @@
+.input-label {
+    display: grid;
+    grid-template-columns: 0.2fr 1.8fr;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+.input-label svg {
+    display: block;
+    margin-right: 10px;
+}

@@ -20,6 +20,9 @@ const PinnedPhotosProvider = ({ children }) => {
     const isTopicPage = location.pathname.includes('topic') || location.pathname.includes('mypins');
 
     const fetchPinnedPhotos = async () => {
+
+        if (isLoggedIn) {
+
         let userInfo = await getUserInfoField();
         if (userInfo instanceof Error) {
             setError(userInfo.message);
@@ -29,6 +32,9 @@ const PinnedPhotosProvider = ({ children }) => {
             }
             setPinnedPhotosIds(userInfo || []);
         }
+
+        }
+
         setLoading(false);
     };
 

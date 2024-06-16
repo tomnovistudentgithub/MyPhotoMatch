@@ -1,8 +1,8 @@
 import styles from './Button.module.css';
 
-function Button({ onClick, children }) {
+function Button({ onClick, children, className }) {
     return (
-        <button className={styles['login-logout-button']} onClick={onClick}>
+        <button className={className} onClick={onClick}>
             {children}
         </button>
     );
