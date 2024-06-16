@@ -79,14 +79,18 @@ function NavBar() {
                     )}
                     <div className={styles['login-button']}>
                         {isLoggedIn ? (
+
                             <Button onClick={handleLogoutClick} className={styles['login-logout-button']}>
+
                                 <FontAwesomeIcon
                                     className={styles['login-icon']}
                                     icon={faSignOutAlt}/><span
                                 className={styles['login-text']}> Logout</span>
                             </Button>
                         ) : (
+
                             <Button onClick={handleLoginClick} className={styles['login-logout-button']}>
+
                                 <FontAwesomeIcon
                                     className={styles['login-icon']}
                                     icon={faSignInAlt}/><span

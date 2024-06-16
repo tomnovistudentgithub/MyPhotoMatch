@@ -123,6 +123,7 @@ function Contact() {
 
 
     return (
+
         <div className={styles["parent-form-wrapper"]}>
             <div className={styles["form-wrapper"]}>
                 {!isLoggedIn &&
