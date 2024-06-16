@@ -13,6 +13,7 @@ import {AuthContext} from "../../contexts/AuthContext.jsx";
 import InputField from "../../Components/InputField/InputField.jsx";
 import PhotoCard from "../../Components/PhotoCard/PhotoCard.jsx";
 import {loginFields} from "../../Components/Auth/formFieldsAuth.js";
+import Button from "../../Components/Button/Button.jsx";
 
 
 
@@ -31,13 +32,16 @@ function Contact() {
     const { setResetForm, isLoggedIn } = useContext(AuthContext);
     const { tagCounts, pinnedPhotos, loading } = useContext(PinnedPhotosContext);
     const [showTasteBanner, setShowTasteBanner] = useState(false);
+    const [workAreasLoading, setWorkAreasLoading] = useState(true);
     const [photosLoading, setPhotosLoading] = useState(true);
 
     useEffect(() => {
         if (workAreas.length < 1) {
             setShowTasteBanner(true);
+            setWorkAreasLoading(false);
         } else {
             setShowTasteBanner(false);
+            setWorkAreasLoading(false);
         }
     }, [workAreas]);
 
@@ -121,11 +125,8 @@ function Contact() {
 
     const resetForm = () => {
         setValue('name', '');
-        setValue('userName', '');
         setValue('email', '');
         setValue('message', '');
-        setSelectedArea('');
-        setPhotographer('');
     };
 
     const closeModal = () => {
@@ -143,7 +144,7 @@ function Contact() {
                     <>
                         {!isLoggedIn &&
                             <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
-                        {showTasteBanner &&
+                        {!workAreasLoading && showTasteBanner &&
                             <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to
                                 contact a matching photographer, please pin more photos. Generally pinning between 10-15 photos
                                 should be sufficient to get a good grasp of your preference.</p>}
@@ -202,6 +203,7 @@ function Contact() {
                     <button type="submit" className={styles["submit-button"]}
                             disabled={!isLoggedIn || workAreas.length === 0}>Submit
                     </button>
+                    <Button type="button" onClick={() => resetForm()} className={styles["reset-button"]}>Reset</Button>
                 </form>
 
 
