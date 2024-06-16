@@ -10,6 +10,18 @@
   padding: 20px;
 }
 
+
+.photo-card-contact {
+  background: none;
+  display: flex;
+  flex-basis: 400px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  height: 950px;
+}
+
 .photo-card-image-container {
   position: relative;
 }
@@ -31,3 +43,20 @@
 .photo-card-info b {
   text-align: center;
 }
+
+@media (max-width: 1000px) or (max-height: 900px) {
+  .photo-card-contact {
+    background: none;
+    display: none;
+  }
+}
+
+
+@media(max-height: 1000px) {
+  .photo-card-contact {
+    flex-basis: 300px;
+    height: 800px;
+    opacity: 40%;
+  }
+}
+
