@@ -29,17 +29,26 @@ function Contact() {
     const [photographersInArea, setPhotographersInArea] = useState([]);
     const [formError, setFormError] = useState('');
     const { setResetForm, isLoggedIn } = useContext(AuthContext);
-    const { tagCounts, pinnedPhotos } = useContext(PinnedPhotosContext);
+    const { tagCounts, pinnedPhotos, loading } = useContext(PinnedPhotosContext);
+    const [showTasteBanner, setShowTasteBanner] = useState(false);
+    const [photosLoading, setPhotosLoading] = useState(true);
 
+    useEffect(() => {
+        if (workAreas.length < 1) {
+            setShowTasteBanner(true);
+        } else {
+            setShowTasteBanner(false);
+        }
+    }, [workAreas]);
 
     useEffect(() => {
         if (tagCounts) {
             const matchingPhotographers = matchPhotographersToUserTags({ tagCounts });
-
             setFilteredPhotographers(matchingPhotographers);
             const uniqueWorkAreas = [...new Set(matchingPhotographers.map(photographer => photographer.workarea))];
             setWorkAreas(uniqueWorkAreas);
         }
+
     }, [tagCounts]);
 
 
@@ -100,7 +109,9 @@ function Contact() {
     };
 
     useEffect(() => {
-        console.log(pinnedPhotos);
+        if (pinnedPhotos.length > 0) {
+            setPhotosLoading(false);
+        }
     }, [pinnedPhotos]);
 
 
@@ -126,12 +137,18 @@ function Contact() {
 
         <div className={styles["parent-form-wrapper"]}>
             <div className={styles["form-wrapper"]}>
-                {!isLoggedIn &&
-                    <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
-                {isLoggedIn && workAreas.length === 0 &&
-                    <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to
-                        contact a matching photographer, please pin more photos. Generally pinning between 10-15 photos
-                        should be sufficient to get a good grasp of your preference.</p>}
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <>
+                        {!isLoggedIn &&
+                            <p className={styles["isLoggedInCheck"]}>You must be logged in to contact a photographer.</p>}
+                        {showTasteBanner &&
+                            <p className={styles["isLoggedInCheck"]}>We cannot determine your photo taste yet. In order to
+                                contact a matching photographer, please pin more photos. Generally pinning between 10-15 photos
+                                should be sufficient to get a good grasp of your preference.</p>}
+                    </>
+                )}
                 <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
                     <h1>Contact</h1>
                     <p>Want to get in touch with a photographer of your choice? You are at the right place!
@@ -206,12 +223,16 @@ function Contact() {
                     </div>
                 )}
             </div>
-            <div className={styles["pinned-photos-container-contact"]}>
-                {pinnedPhotos.slice(0, 7).map((photo) => {
-                    return <PhotoCard photo={photo} key={photo.id} className="photo-card-contact"
-                                      hidePinButton={true}/>
-                })}
-            </div>
+            {photosLoading ? (
+                <p>Loading photos...</p>
+            ) : (
+                <div className={styles["pinned-photos-container-contact"]}>
+                    {pinnedPhotos.slice(0, 7).map((photo) => {
+                        return <PhotoCard photo={photo} key={photo.id} className="photo-card-contact"
+                                          hidePinButton={true}/>
+                    })}
+                </div>
+            )}
         </div>
     );
 }
