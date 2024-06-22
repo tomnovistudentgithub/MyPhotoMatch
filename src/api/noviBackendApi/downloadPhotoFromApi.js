@@ -1,7 +1,5 @@
 import backendEndpoint from "./backendEndpoint.js";
-import axios from "axios";
 import apiHandler from "../apiHelpers/apiHandler.js";
-
 
 async function downloadPhotoFromApi(username) {
 

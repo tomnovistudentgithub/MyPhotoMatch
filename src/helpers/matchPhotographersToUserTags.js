@@ -1,6 +1,5 @@
 import photographersData from "../assets/photographers.json";
 
-
 function matchPhotographersToUserTags(tagCounts) {
 
     const actualTagCounts = tagCounts.tagCounts;

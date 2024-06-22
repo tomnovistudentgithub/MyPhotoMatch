@@ -12,7 +12,6 @@ import preparePhotoForUpload from "../../helpers/preparePhotoForUpload.js";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 import InputField from "../../Components/InputField/InputField.jsx";
 import PhotoCard from "../../Components/PhotoCard/PhotoCard.jsx";
-import {loginFields} from "../../Components/Auth/formFieldsAuth.js";
 import Button from "../../Components/Button/Button.jsx";
 
 

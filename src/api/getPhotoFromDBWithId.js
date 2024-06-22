@@ -1,4 +1,3 @@
-
 import unsplashedEndpoint from "./unsplashedApi/unsplashedEndpoint.js";
 
 export default async function getPhotoFromDBWithId(id) {

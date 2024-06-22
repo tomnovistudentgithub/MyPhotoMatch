@@ -2,7 +2,6 @@ import getUserFromTokenAndPassToken from "./getUserFromTokenAndPassToken.js";
 
 function saveTagsToUserLocalStorage(tags) {
 
-
   if (!tags) {
     return;
   }

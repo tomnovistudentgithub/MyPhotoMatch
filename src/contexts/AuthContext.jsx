@@ -1,5 +1,5 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
-import getUserFromTokenAndPassToken from "../helpers/getUserFromTokenAndPassToken.js";
+import React, {createContext, useEffect, useState} from 'react';
+
 import getUserRoleEmail from "../api/noviBackendApi/getUserRoleEmail.js";
 import axios from "axios";
 import {jwtDecode} from 'jwt-decode';
@@ -10,7 +10,6 @@ export const AuthContext = createContext();
 function AuthContextProvider({ children }) {
     const [authState, setAuthState] = useState({user: null, status: `pending`});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [setError] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
     const [resetForm, setResetForm] = useState(null);
@@ -45,7 +44,7 @@ function AuthContextProvider({ children }) {
                         setIsAdmin(user.userRole === 'ADMIN');
 
                     }
-                    setLoading(false);
+
                 } catch (error) {
                     setError(error.message);
                 }
@@ -58,7 +57,7 @@ function AuthContextProvider({ children }) {
             });
             setIsLoggedIn(false);
         }
-        setLoading(false);
+
     }, []);
 
     const data = {
@@ -70,7 +69,6 @@ function AuthContextProvider({ children }) {
         resetForm: resetForm,
         setResetForm: setResetForm,
     };
-
 
 
     async function login(enteredUsername, enteredPassword) {
@@ -108,7 +106,6 @@ function AuthContextProvider({ children }) {
         }
     }
 
-
     function logout() {
         setAuthState({user: null, setAuthState: 'done', userRole: null});
         localStorage.removeItem('token');
@@ -120,7 +117,6 @@ function AuthContextProvider({ children }) {
             resetForm();
         }
     }
-
 
     return (
         <AuthContext.Provider value={ data }>

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import styles from './About.module.css';
 
 
-
 function About() {
     const [animate, setAnimateTextBox] = useState(false);
     const [animateHeader, setAnimateHeader] = useState(false);
@@ -25,7 +24,6 @@ function About() {
 
     return (
         <>
-
         <main className={styles['about-outer-container']}>
             <section className={`${styles['about-header']} ${animateHeader ? styles.animate : ''}`}>
                 <article className={styles['about-header-inner']}>
@@ -66,7 +64,6 @@ function About() {
                     <figcaption> Image by HelloDavidPradoPerucha on <a href="https://www.freepik.com/free-photo/woman-with-camera-taking-picture-reflection_28006248.htm">Freepik</a></figcaption>
                 </figure>
             </section>
-
         </main>
 
         </>
