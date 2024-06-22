@@ -79,6 +79,7 @@ h2 {
     background-color: rgba(250, 211, 26, 0.42);
     color: white;
     max-width: 800px;
+    padding: 10px;
 }
 
 .outer-section-photos-homepage {

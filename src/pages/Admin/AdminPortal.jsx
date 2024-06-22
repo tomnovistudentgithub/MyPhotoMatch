@@ -32,7 +32,6 @@ function AdminPortal() {
             if (error.response && error.response.status === 400) {
                 setError('No photo available for this user');
             }
-
         }
     };
 

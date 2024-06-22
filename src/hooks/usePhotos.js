@@ -16,15 +16,15 @@ export const usePhotos = () => {
                 console.log("page " + page);
             } catch (error) {
                 if (error.response) {
+                    if (error.name === 'AbortError') {
+                        console.log('Fetch aborted');
+                    } else {
                     setError(error.response.data);
-                } else {
-                    setError(error.message);
-
+                }
                 }
                 setIsLoading(false);
             }
         };
-
         fetchPhotos();
     }, [page]);
 

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import styles from './About.module.css';
 
 
-
 function About() {
     const [animate, setAnimateTextBox] = useState(false);
     const [animateHeader, setAnimateHeader] = useState(false);
