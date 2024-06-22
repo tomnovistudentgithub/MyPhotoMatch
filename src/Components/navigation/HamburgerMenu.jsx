@@ -7,8 +7,7 @@ function HamburgerMenu({ isOpen, setIsOpen, scrolled }) {
     const hamburgerRef = useRef(null);
 
     const handleDocumentClick = (event) => {
-        // if (isOpen && event.target.tagName !== 'A' && event.target.tagName !== 'PATH' && !event.target.classList.contains('nav-link') && !event.target.parentElement.classList.contains('nav-link') && hamburgerRef.current !== event.target)  {
-        //     console.log(event.target.tagName);
+
         if (isOpen && (event.target.tagName !== 'path' && event.target.tagName !== 'svg' && event.target.tagName !== 'A' && event.target.tagName !== 'SPAN')) {
             console.log(event.target.tagName);
             setIsOpen(false);

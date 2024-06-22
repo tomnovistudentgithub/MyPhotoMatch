@@ -1,7 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import downloadPhotoFromApi from "../../api/noviBackendApi/downloadPhotoFromApi.js";
 import styles from './AdminPortal.module.css';
-import {AuthContext} from "../../contexts/AuthContext.jsx";
 import UserInfoButton from "../../Components/InfoButton/UserInfoButton.jsx";
 
 

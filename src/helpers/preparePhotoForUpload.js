@@ -1,6 +1,5 @@
 function preparePhotoForUpload(username, photoFile) {
 
-
     if (!photoFile) {
         throw new Error('No file provided');
     }

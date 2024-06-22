@@ -10,7 +10,7 @@ import Button from "../Button/Button.jsx";
 function UserInfoButton({ username }) {
     const [userInfo, setUserInfo] = useState(null);
     const [error, setError] = useState(null);
-    const [userRole, setUserRole] = useState(null);
+    const [setUserRole] = useState(null);
 
 
     const handleClick = async () => {

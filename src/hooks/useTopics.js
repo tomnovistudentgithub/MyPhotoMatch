@@ -3,16 +3,11 @@ import { getTopics } from '../api/unsplashedApi/getTopics.js';
 import getRandomElements from "../helpers/getRandomElements.js";
 import {classifyTopicsByOrientation} from "../helpers/orientation.js";
 
-
-
 export const useTopics = () => {
     const [topics, setTopics] = useState({portraitTopics: [], landscapeTopics: []});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [displayOrientation, setDisplayOrientation] = useState(localStorage.getItem('displayOrientation') || 'portrait');
-
-
-
 
     useEffect(() => {
         const fetchTopics = async () => {
