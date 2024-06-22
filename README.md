@@ -21,8 +21,10 @@ Om deze applicatie lokaal te kunnen draaien, heb je het volgende nodig:
 4. Open het `.env` bestand in de editor.
 5. Voeg de volgende regels toe aan het bestand:
 
+```
 `VITE_UNSPLASH_ACCESS_KEY=<jouw_unsplash_api_key>` <br>
 `VITE_PHOTOMATCH_ACCESS_KEY=<jouw_novi_datavortex_key>`
+```
 
 ## Installatie
 
